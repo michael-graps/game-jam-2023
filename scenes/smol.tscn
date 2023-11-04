@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba8lh55sy6mnx"]
+
+[ext_resource type="Script" path="res://scripts/smol.gd" id="1_br4om"]
+[ext_resource type="Texture2D" uid="uid://bf8ir76h3xmum" path="res://icon.svg" id="1_doijq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s75tt"]
+size = Vector2(126, 126)
+
+[node name="Smol" type="CharacterBody2D"]
+script = ExtResource("1_br4om")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("1_doijq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_s75tt")
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
