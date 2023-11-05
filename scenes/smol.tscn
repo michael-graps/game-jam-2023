@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba8lh55sy6mnx"]
+[gd_scene load_steps=6 format=3 uid="uid://ba8lh55sy6mnx"]
 
 [ext_resource type="Script" path="res://scripts/smol.gd" id="1_br4om"]
 [ext_resource type="Texture2D" uid="uid://bf8ir76h3xmum" path="res://icon.svg" id="1_doijq"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="3_1gygy"]
+
+[sub_resource type="EventAsset" id="EventAsset_n8yi5"]
+is_3d = true
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Footstep_Sounds"
+guid = "{fc19c021-8142-4e57-9f67-197f01396cdd}"
+name = "Footstep_Sounds"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s75tt"]
 size = Vector2(126, 126)
 
 [node name="Smol" type="CharacterBody2D"]
 script = ExtResource("1_br4om")
+event = SubResource("EventAsset_n8yi5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)
@@ -17,4 +28,16 @@ texture = ExtResource("1_doijq")
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_s75tt")
 
-[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 1
+num_banks = 1
+bank_0 = ExtResource("3_1gygy")
+
+[node name="WalkSoundTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="RunSoundTimer" type="Timer" parent="."]
+
+[node name="ClimbSoundTimer" type="Timer" parent="."]

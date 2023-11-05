@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var event: EventAsset
+
 const SPEED = 500.0
 const JUMP_VELOCITY = -600.0
 const CLIMB_SPEED = 350.0  # Adjust the climbing speed as needed
@@ -26,6 +28,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	
 	move_and_slide()
+	walk_sound_trigger()
 	jump(direction)
 	climb(direction)
 
@@ -53,5 +56,9 @@ func climb(direction):
 		velocity.x = direction * SPEED
 	elif is_climbing == false:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	
+		
+func walk_sound_trigger():
+	if velocity.x != 0 and is_on_floor() and $WalkSoundTimer.time_left <= 0:
+		FMODRuntime.play_one_shot(event)
+		$WalkSoundTimer.start()
+		
