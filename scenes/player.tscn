@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://du04s5w4lm05f"]
+
+[ext_resource type="Texture2D" uid="uid://dfxfdva0rgyij" path="res://assets/Tiny Dungeon/Tiles/tile_0086.png" id="1_ar1sk"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_xl4j1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vd7c7"]
+radius = 6.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xl4j1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_ar1sk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_vd7c7")
+
+[node name="ClimbTimer" type="Timer" parent="."]
+wait_time = 0.125
+one_shot = true

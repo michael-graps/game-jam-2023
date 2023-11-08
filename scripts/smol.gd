@@ -32,6 +32,7 @@ func _physics_process(delta):
 	jump(direction)
 	climb(direction)
 
+
 func jump(direction):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
