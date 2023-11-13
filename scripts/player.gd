@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var event: EventAsset
+
 @export var move_speed : float = 200.0
 @export var air_jumps_total : int = 1
 var air_jumps_current : int = air_jumps_total
@@ -28,8 +30,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump_button"):
 		if is_on_floor():
 			jump()
-		#if is_on_wall_only():
-		#	wall_jump()
+#		if is_on_wall_only():
+#			wall_jump()
 		if air_jumps_current > 0 and not is_on_floor():
 			air_jump()
 	
@@ -39,6 +41,7 @@ func _physics_process(delta):
 		is_climbing = false
 	
 	var direction = Input.get_axis("left_button", "right_button")
+	walk_sound_trigger()
 	if direction and is_climbing == false:
 		velocity.x = direction * move_speed
 	else:
@@ -66,6 +69,8 @@ func air_jump():
 	
 func wall_jump():
 	is_climbing = false
+	if $WalkSoundTimer.time_left <= 0:
+		is_climbing = true
 	velocity.y = jump_velocity
 	
 
@@ -80,3 +85,8 @@ func get_horizontal_velocity() -> float:
 		horizontal += 1.0
 	
 	return horizontal
+
+func walk_sound_trigger():
+	if velocity.x != 0 and is_on_floor() and $WalkSoundTimer.time_left <= 0:
+		FMODRuntime.play_one_shot(event)
+		$WalkSoundTimer.start()
