@@ -60,13 +60,13 @@ func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func playeranim():
-	#if Input.is_action_pressed("left_button"):
+	if Input.is_action_pressed("left_button"):
 		$Sprite/AnimationPlayer.play("walk_left")
-	#	print("mmm left")
-	#if Input.is_action_pressed("right_button"):
+		print("mmm left")
+	if Input.is_action_pressed("right_button"):
 		$Sprite/AnimationPlayer.play("walk_right")
-	#	print("mmm right")
-	#else:
+		print("mmm right")
+	else:
 		$Sprite/AnimationPlayer.play("idle")
 		print("NOT MOVING AAAAAA")
 
