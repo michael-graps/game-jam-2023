@@ -60,12 +60,10 @@ func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func playeranim():
-	if Input.is_action_pressed("left_button"):
-		$Sprite/AnimationPlayer.play("walk_left")
-		print("mmm left")
-	if Input.is_action_pressed("right_button"):
+	var moving = Input.get_axis("left_button", "right_button")
+	if moving:
 		$Sprite/AnimationPlayer.play("walk_right")
-		print("mmm right")
+		print("mmm moving")
 	else:
 		$Sprite/AnimationPlayer.play("idle")
 		print("NOT MOVING AAAAAA")
@@ -106,8 +104,8 @@ func get_horizontal_velocity() -> float:
 	var horizontal := 0.0
 	
 	if Input.is_action_pressed("left_button"):
-		horizontal -= 1.0
 		$Sprite.flip_h = true
+		horizontal -= 1.0
 	if Input.is_action_pressed("right_button"):
 		$Sprite.flip_h = false
 		horizontal += 1.0
