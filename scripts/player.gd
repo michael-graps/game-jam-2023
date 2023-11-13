@@ -9,6 +9,8 @@ var air_jumps_current : int = air_jumps_total
 var is_climbing = false
 var just_walljumped = false
 
+var rise_or_fall = 0 
+
 @export var climb_speed : float = 200
 @export var slide_speed : float = 50
 
@@ -25,11 +27,10 @@ func _physics_process(delta):
 		is_climbing = false
 	if is_climbing == true:
 		climb()
-	#if is_climbing == false and is_on_wall_only():
-	#	velocity.y = slide_speed
 	else:                       # If not climbing, starts making you move towards the floor #
 		velocity.y += get_gravity() * delta
 	velocity.x = get_horizontal_velocity() * move_speed
+	
 	
 	if $WalljumpTimer.time_left <= 0:
 		just_walljumped = false
@@ -52,6 +53,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 	
+	set_vertical_direction()
 	move_and_slide()
 	playeranim()
 
@@ -60,13 +62,15 @@ func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
 func playeranim():
-	var moving = Input.get_axis("left_button", "right_button")
-	if moving:
-		$Sprite/AnimationPlayer.play("walk_right")
-		print("mmm moving")
+	var walking = Input.get_axis("left_button", "right_button")
+	var dance = Input.is_action_pressed("dance_button")
+	
+	if walking and is_on_floor():
+		$Sprite/AnimationPlayer.play("walk")
+	elif dance and is_on_floor():
+		$Sprite/AnimationPlayer.play("jump")
 	else:
 		$Sprite/AnimationPlayer.play("idle")
-		print("NOT MOVING AAAAAA")
 
 # Function that handles climbing #
 func climb():
@@ -100,6 +104,16 @@ func wall_jump():
 	velocity.y = jump_velocity
 	
 
+func set_vertical_direction():
+	var direction = velocity.y
+	if direction > 0:
+		rise_or_fall = 1
+	if direction < 0:
+		rise_or_fall = -1
+	else:
+		rise_or_fall = 0
+
+# This function gets horizontal velocity #
 func get_horizontal_velocity() -> float:
 	var horizontal := 0.0
 	
@@ -112,6 +126,7 @@ func get_horizontal_velocity() -> float:
 	
 	return horizontal
 
+# This function handles triggering the FMOD Walk Sound #
 func walk_sound_trigger():
 	if velocity.x != 0 and is_on_floor() and $WalkSoundTimer.time_left <= 0:
 		FMODRuntime.play_one_shot(event)
