@@ -7,8 +7,10 @@ extends CharacterBody2D
 var air_jumps_current : int = air_jumps_total
 
 var is_climbing = false
+var just_walljumped = false
 
 @export var climb_speed : float = 200
+@export var slide_speed : float = 50
 
 @export var jump_height : float = 30
 @export var jump_time_to_peak : float = 0.25
@@ -19,23 +21,26 @@ var is_climbing = false
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
 func _physics_process(delta):
-	if is_on_floor():
+	if is_on_floor():           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	if is_climbing == true:
 		climb()
-	else:
+	#if is_climbing == false and is_on_wall_only():
+	#	velocity.y = slide_speed
+	else:                       # If not climbing, starts making you move towards the floor #
 		velocity.y += get_gravity() * delta
 	velocity.x = get_horizontal_velocity() * move_speed
+	
+	if $WalljumpTimer.time_left <= 0:
+		just_walljumped = false
 	
 	if Input.is_action_just_pressed("jump_button"):
 		if is_on_floor():
 			jump()
-#		if is_on_wall_only():
-#			wall_jump()
 		if air_jumps_current > 0 and not is_on_floor():
 			air_jump()
 	
-	if Input.is_action_pressed("climb_button") and is_on_wall_only():
+	if Input.is_action_pressed("climb_button") and is_on_wall_only() and just_walljumped == false:
 		is_climbing = true
 	if Input.is_action_just_released("climb_button") and is_climbing == true:
 		is_climbing = false
@@ -48,14 +53,37 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 	
 	move_and_slide()
+	playeranim()
 
+# Function that gives you gravity as a float #
 func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
+func playeranim():
+	#if Input.is_action_pressed("left_button"):
+		$Sprite/AnimationPlayer.play("walk_left")
+	#	print("mmm left")
+	#if Input.is_action_pressed("right_button"):
+		$Sprite/AnimationPlayer.play("walk_right")
+	#	print("mmm right")
+	#else:
+		$Sprite/AnimationPlayer.play("idle")
+		print("NOT MOVING AAAAAA")
+
+# Function that handles climbing #
 func climb():
 	var climb_direction = Input.get_axis("up_button", "down_button")
-	if climb_direction and is_on_wall_only():
+	var walljump_direction = Input.get_axis("left_button", "right_button")
+	if walljump_direction and is_on_wall_only() and Input.is_action_just_pressed("jump_button"):
+		velocity.y = jump_velocity
+		velocity.x = walljump_direction * move_speed
+		is_climbing = false
+		just_walljumped = true
+		$WalljumpTimer.start()
+		return
+	if climb_direction and is_on_wall_only() and is_climbing == true:
 		velocity.y = climb_direction * climb_speed
+		just_walljumped = false
 	else:
 		velocity.y = 0
 
