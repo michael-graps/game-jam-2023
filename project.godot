@@ -13,7 +13,8 @@ config_version=5
 config/name="Game Jam 2023"
 run/main_scene="res://scenes/platformer_world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+config/icon="res://assets/low res coffee.jpg"
 
 [autoload]
 
