@@ -9,7 +9,7 @@ var air_jumps_current : int = air_jumps_total
 var is_climbing = false
 var just_walljumped = false
 
-var rise_or_fall = 0 
+var anim_counter = 0
 
 @export var climb_speed : float = 200
 @export var slide_speed : float = 50
@@ -21,6 +21,8 @@ var rise_or_fall = 0
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+
+@onready var ap = $Sprite/AnimationPlayer
 
 func _physics_process(delta):
 	if is_on_floor():           # Checks to see if you're on the floor, sets is_climbing accordingly #
@@ -53,24 +55,28 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 	
-	set_vertical_direction()
 	move_and_slide()
-	playeranim()
+	var horizontal_direction = Input.get_axis("left_button","right_button")
+	update_animations(horizontal_direction)
 
 # Function that gives you gravity as a float #
 func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
-func playeranim():
-	var walking = Input.get_axis("left_button", "right_button")
-	var dance = Input.is_action_pressed("dance_button")
-	
-	if walking and is_on_floor():
-		$Sprite/AnimationPlayer.play("walk")
-	elif dance and is_on_floor():
-		$Sprite/AnimationPlayer.play("jump")
+
+func update_animations(horizontal_direction):
+	if is_on_floor():
+		if horizontal_direction == 0:
+			ap.play("idle")
+		else:
+			ap.play("walk")
 	else:
-		$Sprite/AnimationPlayer.play("idle")
+		if Input.is_action_just_pressed("jump_button"):
+			ap.play("jump_start")
+		if velocity.y < 0:
+			ap.queue("jump")
+		elif velocity.y > 0:
+			ap.play("fall")
 
 # Function that handles climbing #
 func climb():
@@ -103,15 +109,6 @@ func wall_jump():
 		is_climbing = true
 	velocity.y = jump_velocity
 	
-
-func set_vertical_direction():
-	var direction = velocity.y
-	if direction > 0:
-		rise_or_fall = 1
-	if direction < 0:
-		rise_or_fall = -1
-	else:
-		rise_or_fall = 0
 
 # This function gets horizontal velocity #
 func get_horizontal_velocity() -> float:
