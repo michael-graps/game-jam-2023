@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://du04s5w4lm05f"]
+[gd_scene load_steps=28 format=3 uid="uid://du04s5w4lm05f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xl4j1"]
 [ext_resource type="Texture2D" uid="uid://bcgv3d2ew8mpd" path="res://assets/Smol_SpriteSheet.png" id="2_7r755"]
@@ -15,7 +15,7 @@ name = "Footstep_Sounds"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wggjk"]
 cull_mode = 1
-polygon = PackedVector2Array(-3, 1, 0, 1, 0, 0, -1, 0, -1, -1, 3, -1, 3, 0, 3, 1, 6, 1, 6, 0, 5, 0, 5, -1, 5, -2, 6, -2, 6, -2, 6, -6, 5, -6, 5, -7, -4, -7, -4, -6, -5, -6, -5, -4, -6, -4, -6, -3, -6, -2, -5, -2, -5, -1, -3, -1)
+polygon = PackedVector2Array(-3, 2, 0, 2, 0, 1, -1, 1, -1, 0, 0, 0, 1, 0, 2, 0, 3, 0, 3, 0, 3, 2, 6, 2, 6, 1, 5, 1, 5, -1, 6, -1, 6, -2, 6, -2, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -4, -5, -3, -6, -3, -6, -1, -5, -1, -5, 0, -3, 0)
 
 [sub_resource type="Animation" id="Animation_gyyow"]
 length = 0.001
@@ -93,9 +93,31 @@ tracks/0/keys = {
 "values": [Vector2i(4, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_nui21"]
+resource_name = "fall_land"
+length = 0.10001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(5, 2)]
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6kcvk"]
+polygon = PackedVector2Array(-4, -4, -5, -4, -5, -2, -6, -2, -6, 0, -5, 0, -5, 1, -3, 1, -3, 1, -3, 2, 0, 2, 0, 1, 3, 1, 3, 2, 6, 2, 6, 1, 5, 1, 5, 0, 6, 0, 6, -4, 5, -4, 5, -5, -4, -5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vccvt"]
+polygon = PackedVector2Array(5, -5, -4, -5, -4, -4, -5, -4, -5, -3, -6, -3, -6, -1, -5, -1, -5, 0, -3, 0, -3, 2, 0, 2, 0, 1, -1, 1, -1, 0, 3, 0, 3, 2, 6, 2, 6, 1, 5, 1, 5, -1, 6, -1, 6, -4, 5, -4)
+
 [sub_resource type="Animation" id="Animation_3fug8"]
 resource_name = "idle"
-length = 1.5
+length = 1.50001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -104,10 +126,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4)]
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -116,16 +138,16 @@ tracks/1/path = NodePath("LightOccluder2D:occluder")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk")]
+"values": [SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_wggjk"), SubResource("OccluderPolygon2D_6kcvk"), SubResource("OccluderPolygon2D_vccvt"), SubResource("OccluderPolygon2D_vccvt")]
 }
 
 [sub_resource type="Animation" id="Animation_61iu1"]
 resource_name = "jump"
-length = 0.150005
-step = 0.05
+length = 0.050005
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,10 +155,26 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+"values": [Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_5qp4i"]
+resource_name = "jump_start"
+length = 0.20001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 2), Vector2i(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_j1yd3"]
@@ -161,6 +199,24 @@ resource_name = "sleep"
 [sub_resource type="Animation" id="Animation_8sko7"]
 resource_name = "wake_up"
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hrsij"]
+polygon = PackedVector2Array(-2, 0, -2, 1, -1, 1, -1, 2, -4, 2, -4, 0, -5, 0, -5, -1, -6, -1, -6, -3, -5, -3, -5, -5, -4, -5, -4, -6, 5, -6, 5, -5, 6, -5, 6, -1, 5, -1, 5, 0, 6, 0, 6, 1, 3, 1, 3, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dxkpi"]
+polygon = PackedVector2Array(-3, 0, 4, 0, 4, 1, 7, 1, 7, 0, 6, 0, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -3, -6, -3, -6, -1, -5, -1, -5, 2, -2, 2, -2, 1, -3, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6w652"]
+polygon = PackedVector2Array(5, -7, 5, -6, 6, -6, 6, 1, 7, 1, 7, 2, 4, 2, 4, 0, -2, 0, -2, 1, -5, 1, -5, -1, -6, -1, -6, -4, -5, -4, -5, -6, -4, -6, -4, -7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uk58j"]
+polygon = PackedVector2Array(-1, 0, 3, 0, 3, 2, 6, 2, 6, 1, 5, 1, 5, -1, 6, -1, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -4, -6, -4, -6, -1, -5, -1, -5, 0, -4, 0, -4, 1, -1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dm2ka"]
+polygon = PackedVector2Array(0, 0, 3, 0, 3, 2, 6, 2, 6, 1, 5, 1, 5, -1, 6, -1, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -3, -6, -3, -6, -1, -5, -1, -5, 0, -3, 0, -3, 1, 0, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vcwpy"]
+polygon = PackedVector2Array(-5, -6, -5, -4, -6, -4, -6, -1, -4, -1, -4, 0, -3, 0, -3, 2, 0, 2, 0, 1, -1, 1, -1, 0, 2, 0, 2, 1, 5, 1, 5, 0, 4, 0, 4, -1, 6, -1, 6, -6, 5, -6, 5, -7, -4, -7, -4, -6)
+
 [sub_resource type="Animation" id="Animation_k14e7"]
 resource_name = "walk"
 length = 0.6
@@ -177,6 +233,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOccluder2D:occluder")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [SubResource("OccluderPolygon2D_hrsij"), SubResource("OccluderPolygon2D_dxkpi"), SubResource("OccluderPolygon2D_6w652"), SubResource("OccluderPolygon2D_uk58j"), SubResource("OccluderPolygon2D_dm2ka"), SubResource("OccluderPolygon2D_vcwpy")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i0si4"]
 _data = {
@@ -184,8 +252,10 @@ _data = {
 "climb_start": SubResource("Animation_4p77e"),
 "climbing": SubResource("Animation_ojyb2"),
 "fall": SubResource("Animation_8srcx"),
+"fall_land": SubResource("Animation_nui21"),
 "idle": SubResource("Animation_3fug8"),
 "jump": SubResource("Animation_61iu1"),
+"jump_start": SubResource("Animation_5qp4i"),
 "land": SubResource("Animation_j1yd3"),
 "sleep": SubResource("Animation_tua5e"),
 "wake_up": SubResource("Animation_8sko7"),
@@ -210,7 +280,7 @@ vframes = 6
 frame = 32
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-position = Vector2(8, 15)
+position = Vector2(8, 14)
 occluder = SubResource("OccluderPolygon2D_wggjk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
