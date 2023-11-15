@@ -58,6 +58,10 @@ func _physics_process(delta):
 	move_and_slide()
 	var horizontal_direction = Input.get_axis("left_button","right_button")
 	update_animations(horizontal_direction)
+	
+	# TEMPORARY TELEPORT BACK IN BOUNDS #
+	if global_position.y == -1000:
+		set_global_position(Vector2)
 
 # Function that gives you gravity as a float #
 func get_gravity() -> float:
@@ -70,6 +74,10 @@ func update_animations(horizontal_direction):
 			ap.play("idle")
 		else:
 			ap.play("walk")
+	elif is_climbing == true:
+			ap.play("climbing")
+			if velocity.y == 0:
+				ap.play("climb_start")
 	else:
 		if Input.is_action_just_pressed("jump_button"):
 			ap.play("jump_start")
@@ -111,6 +119,7 @@ func wall_jump():
 	
 
 # This function gets horizontal velocity #
+# and also flips the sprite to face movement direction #
 func get_horizontal_velocity() -> float:
 	var horizontal := 0.0
 	

@@ -43,6 +43,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [SubResource("OccluderPolygon2D_wggjk")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4p77e"]
 resource_name = "climb_start"
@@ -58,6 +70,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ojyb2"]
@@ -269,7 +293,13 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xl4j1")
 event = SubResource("EventAsset_n8yi5")
+move_speed = null
+air_jumps_total = null
 climb_speed = 300.0
+slide_speed = null
+jump_height = null
+jump_time_to_peak = null
+jump_time_to_descent = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-8, -16)
@@ -289,7 +319,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_vd7c7")
 
