@@ -332,5 +332,5 @@ wait_time = 0.1
 one_shot = true
 
 [node name="WalkSoundTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true

@@ -59,9 +59,6 @@ func _physics_process(delta):
 	var horizontal_direction = Input.get_axis("left_button","right_button")
 	update_animations(horizontal_direction)
 	
-	# TEMPORARY TELEPORT BACK IN BOUNDS #
-	if global_position.y == -1000:
-		set_global_position(Vector2)
 
 # Function that gives you gravity as a float #
 func get_gravity() -> float:
