@@ -21,6 +21,10 @@ config/icon="res://assets/low res coffee.jpg"
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 Global="*res://scripts/global.gd"
 
+[display]
+
+window/vsync/vsync_mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/FMOD/plugin.cfg")

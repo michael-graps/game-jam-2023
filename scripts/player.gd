@@ -15,13 +15,13 @@ var anim_counter = 0
 @export var slide_speed : float = 50
 
 @export var jump_height : float = 30
-@export var airjump_height : float = 30
+@export var air_jump_height : float = 55
 @export var jump_time_to_peak : float = 0.25
-@export var airjump_time_to_peak : float = 0.25
-@export var jump_time_to_descent : float = 0.15
+@export var air_jump_time_to_peak : float = 0.30
+@export var jump_time_to_descent : float = 0.25
 
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-@onready var airjump_velocity : float = ((2.0 * airjump_height) / airjump_time_to_peak) * -1.0
+@onready var air_jump_velocity : float = ((2.0 * air_jump_height) / air_jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
@@ -43,11 +43,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump_button"):
 		if is_on_floor():
 			jump()
-		if air_jumps_current > 0 and not is_on_floor():
+		if air_jumps_current > 0 and not is_on_floor() and just_walljumped == false:
 			air_jump()
 	
 	if Input.is_action_pressed("climb_button") and is_on_wall_only() and just_walljumped == false:
+		air_jumps_current = 0
 		is_climbing = true
+		
 	if Input.is_action_just_released("climb_button") and is_climbing == true:
 		is_climbing = false
 	
@@ -91,7 +93,7 @@ func climb():
 	var climb_direction = Input.get_axis("up_button", "down_button")
 	var walljump_direction = Input.get_axis("left_button", "right_button")
 	if walljump_direction and is_on_wall_only() and Input.is_action_just_pressed("jump_button"):
-		velocity.y = jump_velocity
+		jump()
 		velocity.x = walljump_direction * move_speed
 		is_climbing = false
 		just_walljumped = true
@@ -109,14 +111,7 @@ func jump():
 	
 func air_jump():
 	air_jumps_current -= 1
-	velocity.y = airjump_velocity
-	
-func wall_jump():
-	is_climbing = false
-	if $WalkSoundTimer.time_left <= 0:
-		is_climbing = true
-	velocity.y = jump_velocity
-	
+	velocity.y = air_jump_velocity
 
 # This function gets horizontal velocity #
 # and also flips the sprite to face movement direction #

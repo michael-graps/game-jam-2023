@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xl4j1"]
 [ext_resource type="Texture2D" uid="uid://bcgv3d2ew8mpd" path="res://assets/Smol_SpriteSheet.png" id="2_7r755"]
-[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="3_eby31"]
+[ext_resource type="BankAsset" uid="uid://cm3q8b0ppybfp" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="3_eby31"]
 
 [sub_resource type="EventAsset" id="EventAsset_n8yi5"]
 is_3d = true
@@ -305,6 +305,7 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xl4j1")
 event = SubResource("EventAsset_n8yi5")
+jump_time_to_peak = 0.3
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-8, -16)
