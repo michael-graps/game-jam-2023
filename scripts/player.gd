@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var event: EventAsset
 
-@export var move_speed : float = 200.0
+@export var move_speed : float = 200
 @export var air_jumps_total : int = 1
 var air_jumps_current : int = air_jumps_total
 
@@ -11,14 +11,17 @@ var just_walljumped = false
 
 var anim_counter = 0
 
-@export var climb_speed : float = 200
+@export var climb_speed : float = 50
 @export var slide_speed : float = 50
 
 @export var jump_height : float = 30
+@export var airjump_height : float = 30
 @export var jump_time_to_peak : float = 0.25
+@export var airjump_time_to_peak : float = 0.25
 @export var jump_time_to_descent : float = 0.15
 
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var airjump_velocity : float = ((2.0 * airjump_height) / airjump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
@@ -106,7 +109,7 @@ func jump():
 	
 func air_jump():
 	air_jumps_current -= 1
-	velocity.y = jump_velocity
+	velocity.y = airjump_velocity
 	
 func wall_jump():
 	is_climbing = false

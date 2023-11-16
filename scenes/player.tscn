@@ -15,7 +15,7 @@ name = "Footstep_Sounds"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wggjk"]
 cull_mode = 1
-polygon = PackedVector2Array(-3, 2, 0, 2, 0, 1, -1, 1, -1, 0, 0, 0, 1, 0, 2, 0, 3, 0, 3, 0, 3, 2, 6, 2, 6, 1, 5, 1, 5, -1, 6, -1, 6, -2, 6, -2, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -4, -5, -3, -6, -3, -6, -1, -5, -1, -5, 0, -3, 0)
+polygon = PackedVector2Array(-3, 2, -3, 3, -2, 3, -2, 2, -1, 2, -1, 1, -1, 0, 0, 0, 1, 0, 2, 0, 3, 0, 3, 0, 3, 3, 4, 3, 4, 2, 5, 2, 5, 1, 5, -1, 6, -1, 6, -2, 6, -2, 6, -5, 5, -5, 5, -6, -4, -6, -4, -5, -5, -5, -5, -4, -5, -3, -6, -3, -6, -1, -5, -1, -5, 0, -3, 0)
 
 [sub_resource type="Animation" id="Animation_gyyow"]
 length = 0.001
@@ -184,6 +184,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(3, 2)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightOccluder2D:occluder")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("OccluderPolygon2D_wggjk")]
+}
 
 [sub_resource type="Animation" id="Animation_5qp4i"]
 resource_name = "jump_start"
@@ -293,13 +305,6 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xl4j1")
 event = SubResource("EventAsset_n8yi5")
-move_speed = null
-air_jumps_total = null
-climb_speed = 300.0
-slide_speed = null
-jump_height = null
-jump_time_to_peak = null
-jump_time_to_descent = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-8, -16)
@@ -310,7 +315,7 @@ vframes = 6
 frame = 32
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-position = Vector2(8, 14)
+position = Vector2(8, 12)
 occluder = SubResource("OccluderPolygon2D_wggjk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
@@ -319,6 +324,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_vd7c7")
 
@@ -332,5 +338,5 @@ wait_time = 0.1
 one_shot = true
 
 [node name="WalkSoundTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.333
 one_shot = true

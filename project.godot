@@ -19,6 +19,7 @@ config/icon="res://assets/low res coffee.jpg"
 [autoload]
 
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
+Global="*res://scripts/global.gd"
 
 [editor_plugins]
 
