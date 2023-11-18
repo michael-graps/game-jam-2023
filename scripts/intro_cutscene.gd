@@ -9,7 +9,6 @@ extends Node2D
 @onready var pt7 = $Page7/AnimationPlayer
 
 var PageNum = 0 
-var eggs = 0
 
 func _ready():
 	$Page1.hide()
@@ -71,5 +70,5 @@ func _physics_process(delta):
 
 	else:
 		if PageNum == 7 and $Timer.time_left == 0 and $TransitionTimer.time_left == 0:
-			print("ASS")
-			get_tree().change_scene_to_file("res://scenes/platformer_world.tscn")
+			print("Transitioning from the Intro to Area 1")
+			get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")

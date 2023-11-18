@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://bkmfkprymsvlc"]
 
-[ext_resource type="Script" path="res://scripts/IntroCutscene.gd" id="1_2l3op"]
-[ext_resource type="Texture2D" uid="uid://xuv6aldsubr7" path="res://assets/Video/Spritesheets/Intro_Picture1.png" id="1_xixhb"]
-[ext_resource type="Texture2D" uid="uid://cfokjvxmntdqy" path="res://assets/Video/Spritesheets/Intro_Picture2.png" id="3_fygy0"]
-[ext_resource type="Texture2D" uid="uid://31b73bsc6yhp" path="res://assets/Video/Spritesheets/Intro_Picture3.png" id="4_rj2wk"]
-[ext_resource type="Texture2D" uid="uid://cbx62u0bdx8e4" path="res://assets/Video/Spritesheets/Intro_Picture4.png" id="5_djmav"]
-[ext_resource type="Texture2D" uid="uid://bxs04a102osb1" path="res://assets/Video/Spritesheets/Intro_Picture5.png" id="6_8jx83"]
-[ext_resource type="Texture2D" uid="uid://denxnankh4nb8" path="res://assets/Video/Spritesheets/Intro_Picture6.png" id="7_gcec0"]
-[ext_resource type="Texture2D" uid="uid://bg6kq7pyr0srs" path="res://assets/Video/Spritesheets/Intro_Picture7.png" id="8_rj44u"]
+[ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_qxis0"]
+[ext_resource type="Texture2D" uid="uid://xuv6aldsubr7" path="res://assets/Video/Spritesheets/Intro_Picture1.png" id="2_v47mh"]
+[ext_resource type="Texture2D" uid="uid://cfokjvxmntdqy" path="res://assets/Video/Spritesheets/Intro_Picture2.png" id="3_hnmh8"]
+[ext_resource type="Texture2D" uid="uid://31b73bsc6yhp" path="res://assets/Video/Spritesheets/Intro_Picture3.png" id="4_qogjk"]
+[ext_resource type="Texture2D" uid="uid://cbx62u0bdx8e4" path="res://assets/Video/Spritesheets/Intro_Picture4.png" id="5_sx1q6"]
+[ext_resource type="Texture2D" uid="uid://bxs04a102osb1" path="res://assets/Video/Spritesheets/Intro_Picture5.png" id="6_dbqxs"]
+[ext_resource type="Texture2D" uid="uid://denxnankh4nb8" path="res://assets/Video/Spritesheets/Intro_Picture6.png" id="7_1trb2"]
+[ext_resource type="Texture2D" uid="uid://bg6kq7pyr0srs" path="res://assets/Video/Spritesheets/Intro_Picture7.png" id="8_khr5m"]
 
 [sub_resource type="Animation" id="Animation_8gw46"]
 length = 0.001
@@ -26,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Page2:frame")
+tracks/1/path = NodePath(".:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,7 +38,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Page3:frame")
+tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,7 +50,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Page4:frame")
+tracks/3/path = NodePath(".:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,7 +62,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Page5:frame")
+tracks/4/path = NodePath(".:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -74,7 +74,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Page6:frame")
+tracks/5/path = NodePath(".:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -86,7 +86,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Page7:frame")
+tracks/6/path = NodePath(".:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -120,7 +120,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page2:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,7 +137,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page3:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -154,7 +154,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page4:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -171,7 +171,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page5:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -188,7 +188,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page6:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -204,7 +204,7 @@ length = 2.90001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Page7:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -226,8 +226,8 @@ _data = {
 "page_7": SubResource("Animation_jk1b5")
 }
 
-[node name="IntroCutscene" type="Node2D"]
-script = ExtResource("1_2l3op")
+[node name="intro_cutscene" type="Node2D"]
+script = ExtResource("1_qxis0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
@@ -248,7 +248,7 @@ one_shot = true
 [node name="Page1" type="Sprite2D" parent="."]
 position = Vector2(-3, -49)
 rotation = 0.0358935
-texture = ExtResource("1_xixhb")
+texture = ExtResource("2_v47mh")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page1"]
@@ -260,7 +260,7 @@ libraries = {
 z_index = 1
 position = Vector2(-44, -27)
 rotation = -0.0593412
-texture = ExtResource("3_fygy0")
+texture = ExtResource("3_hnmh8")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page2"]
@@ -272,7 +272,7 @@ libraries = {
 z_index = 1
 position = Vector2(79.9184, -16.8161)
 rotation = 0.0610865
-texture = ExtResource("4_rj2wk")
+texture = ExtResource("4_qogjk")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page3"]
@@ -284,7 +284,7 @@ libraries = {
 z_index = 1
 position = Vector2(-75, 4)
 rotation = -0.0474946
-texture = ExtResource("5_djmav")
+texture = ExtResource("5_sx1q6")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page4"]
@@ -296,7 +296,7 @@ libraries = {
 z_index = 1
 position = Vector2(75.9183, 26.1839)
 rotation = 0.0619927
-texture = ExtResource("6_8jx83")
+texture = ExtResource("6_dbqxs")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page5"]
@@ -308,7 +308,7 @@ libraries = {
 z_index = 1
 position = Vector2(-69, 33)
 rotation = -0.0388771
-texture = ExtResource("7_gcec0")
+texture = ExtResource("7_1trb2")
 hframes = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page6"]
@@ -319,7 +319,7 @@ libraries = {
 [node name="Page7" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-2, -9)
-texture = ExtResource("8_rj44u")
+texture = ExtResource("8_khr5m")
 hframes = 29
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page7"]

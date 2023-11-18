@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jam 2023"
-run/main_scene="res://scenes/platformer_world.tscn"
+run/main_scene="res://scenes/area1_basement.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://assets/low res coffee.jpg"

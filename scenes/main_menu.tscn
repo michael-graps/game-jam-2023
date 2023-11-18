@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpawajjyn1e18"]
 
-[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_h2snx"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_1i2r5"]
 
 [sub_resource type="Theme" id="Theme_dg513"]
 
-[node name="Menu" type="Control"]
+[node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h2snx")
+script = ExtResource("1_1i2r5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
