@@ -65,7 +65,6 @@ func _physics_process(delta):
 	
 	elif PageNum == 6 and $Timer.time_left == 0:
 		$Page7.show()
-		pt6.stop()
 		pt7.play("page_7")
 		PageNum = PageNum + 1
 		$Timer.start()
