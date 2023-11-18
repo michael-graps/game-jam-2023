@@ -26,16 +26,19 @@ var anim_counter = 0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
 @onready var ap = $Sprite/AnimationPlayer
+@onready var climb_cast_left = $climb_raycast_left
+@onready var climb_cast_right = $climb_raycast_right
+@onready var climb_cast_down = $climb_raycast_down
+
 
 func _physics_process(delta):
-	if is_on_floor():           # Checks to see if you're on the floor, sets is_climbing accordingly #
+	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	if is_climbing == true:
 		climb()
 	else:                       # If not climbing, starts making you move towards the floor #
 		velocity.y += get_gravity() * delta
 	velocity.x = get_horizontal_velocity() * move_speed
-	
 	
 	if $WalljumpTimer.time_left <= 0:
 		just_walljumped = false
@@ -46,7 +49,7 @@ func _physics_process(delta):
 		if air_jumps_current > 0 and not is_on_floor() and just_walljumped == false:
 			air_jump()
 	
-	if Input.is_action_pressed("climb_button") and is_on_wall_only() and just_walljumped == false:
+	if Input.is_action_pressed("climb_button") and is_colliding_wall() and just_walljumped == false:
 		air_jumps_current = 0
 		is_climbing = true
 		
@@ -88,18 +91,21 @@ func update_animations(horizontal_direction):
 		elif velocity.y > 0:
 			ap.play("fall")
 
+func is_colliding_wall():
+	return ((climb_cast_left.is_colliding() or climb_cast_right.is_colliding()) and climb_cast_down.is_colliding() == false)
+
 # Function that handles climbing #
 func climb():
 	var climb_direction = Input.get_axis("up_button", "down_button")
 	var walljump_direction = Input.get_axis("left_button", "right_button")
-	if walljump_direction and is_on_wall_only() and Input.is_action_just_pressed("jump_button"):
+	if walljump_direction and is_colliding_wall() and Input.is_action_just_pressed("jump_button"):
 		jump()
 		velocity.x = walljump_direction * move_speed
 		is_climbing = false
 		just_walljumped = true
 		$WalljumpTimer.start()
 		return
-	if climb_direction and is_on_wall_only() and is_climbing == true:
+	if climb_direction and is_colliding_wall() and is_climbing == true:
 		velocity.y = climb_direction * climb_speed
 		just_walljumped = false
 	else:
