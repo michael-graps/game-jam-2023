@@ -1,5 +1,7 @@
 extends Control
 
+func _ready():
+	$VBoxContainer/IntroStart.grab_focus()
 
 func _on_intro_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/intro_cutscene.tscn")

@@ -30,19 +30,25 @@ theme = SubResource("Theme_dg513")
 
 [node name="IntroStart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuickStart")
 text = "Intro Start"
 
 [node name="QuickStart" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../IntroStart")
+focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "Quick Start"
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuickStart")
+focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options
 "
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
 text = "Quit
 "
 
