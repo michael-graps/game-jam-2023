@@ -49,7 +49,7 @@ func _physics_process(delta):
 		if air_jumps_current > 0 and not is_on_floor() and just_walljumped == false:
 			air_jump()
 	
-	if Input.is_action_pressed("climb_button") and is_colliding_wall() and just_walljumped == false:
+	if Input.is_action_pressed("climb_button") and is_colliding_wall() and just_walljumped == false and is_on_wall_only():
 		air_jumps_current = 0
 		is_climbing = true
 		
@@ -57,7 +57,7 @@ func _physics_process(delta):
 		is_climbing = false
 	
 	var direction = Input.get_axis("left_button", "right_button")
-	walk_sound_trigger()
+	#walk_sound_trigger()
 	if direction and is_climbing == false:
 		velocity.x = direction * move_speed
 	else:
@@ -133,8 +133,3 @@ func get_horizontal_velocity() -> float:
 	
 	return horizontal
 
-# This function handles triggering the FMOD Walk Sound #
-func walk_sound_trigger():
-	if velocity.x != 0 and is_on_floor() and $WalkSoundTimer.time_left <= 0:
-		FMODRuntime.play_one_shot(event)
-		$WalkSoundTimer.start()
