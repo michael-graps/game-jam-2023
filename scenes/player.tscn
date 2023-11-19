@@ -373,8 +373,8 @@ target_position = Vector2(0, 1)
 wait_time = 0.1
 one_shot = true
 
-[node name="WalkSoundTimer" type="Timer" parent="."]
-wait_time = 0.333
+[node name="coyote_timer" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
 
 [node name="FmodTrigger" type="Node" parent="."]

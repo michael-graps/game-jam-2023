@@ -10,6 +10,7 @@ var is_climbing = false
 var just_walljumped = false
 
 var anim_counter = 0
+var has_jumped = false
 
 @export var climb_speed : float = 50
 @export var slide_speed : float = 50
@@ -25,15 +26,21 @@ var anim_counter = 0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
+
+@onready var c_time = $coyote_timer
 @onready var ap = $Sprite/AnimationPlayer
 @onready var climb_cast_left = $climb_raycast_left
 @onready var climb_cast_right = $climb_raycast_right
 @onready var climb_cast_down = $climb_raycast_down
-
+var direction
 
 func _physics_process(delta):
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
+	
+	if is_on_floor():
+		has_jumped = false
+
 	if is_climbing == true:
 		climb()
 	else:                       # If not climbing, starts making you move towards the floor #
@@ -42,11 +49,10 @@ func _physics_process(delta):
 	
 	if $WalljumpTimer.time_left <= 0:
 		just_walljumped = false
-	
 	if Input.is_action_just_pressed("jump_button"):
-		if is_on_floor():
+		if (is_on_floor() or c_time.time_left > 0) and is_climbing == false and has_jumped == false:
 			jump()
-		if air_jumps_current > 0 and not is_on_floor() and just_walljumped == false:
+		if air_jumps_current > 0 and not is_on_floor() and just_walljumped == false and c_time.time_left <= 0:
 			air_jump()
 	
 	if Input.is_action_pressed("climb_button") and is_colliding_wall() and just_walljumped == false and is_on_wall_only():
@@ -56,16 +62,25 @@ func _physics_process(delta):
 	if Input.is_action_just_released("climb_button") and is_climbing == true:
 		is_climbing = false
 	
-	var direction = Input.get_axis("left_button", "right_button")
-	#walk_sound_trigger()
+	direction = Input.get_axis("left_button", "right_button")
 	if direction and is_climbing == false:
 		velocity.x = direction * move_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 	
+	var was_on_floor = is_on_floor()
+	
 	move_and_slide()
 	var horizontal_direction = Input.get_axis("left_button","right_button")
 	update_animations(horizontal_direction)
+	
+	if was_on_floor:
+		air_jumps_current = air_jumps_total
+	
+	if was_on_floor and is_on_floor() == false and has_jumped == false:
+		print("COYOTE TIME")
+		
+		c_time.start()
 	
 
 # Function that gives you gravity as a float #
@@ -98,7 +113,7 @@ func is_colliding_wall():
 func climb():
 	var climb_direction = Input.get_axis("up_button", "down_button")
 	var walljump_direction = Input.get_axis("left_button", "right_button")
-	if walljump_direction and is_colliding_wall() and Input.is_action_just_pressed("jump_button"):
+	if walljump_direction and is_colliding_wall() and Input.is_action_just_pressed("jump_button") and !(direction < 0 and climb_cast_left.is_colliding()) and !(direction > 0 and climb_cast_right.is_colliding()):
 		jump()
 		velocity.x = walljump_direction * move_speed
 		is_climbing = false
@@ -112,7 +127,7 @@ func climb():
 		velocity.y = 0
 
 func jump():
-	air_jumps_current = air_jumps_total
+	has_jumped = true
 	velocity.y = jump_velocity
 	
 func air_jump():
