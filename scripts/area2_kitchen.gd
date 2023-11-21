@@ -8,3 +8,6 @@ func _on_area_1_transition_body_entered(body):
 
 func _on_area_3_transition_body_entered(body):
 	print("I'd teleport to Area 3: The Attic, IF THERE WAS ONE. fucking idiot.")
+
+func _ready():
+	Engine.max_fps = 60
