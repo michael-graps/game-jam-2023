@@ -343,7 +343,6 @@ vframes = 6
 frame = 32
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-visible = false
 position = Vector2(8, 12)
 occluder = SubResource("OccluderPolygon2D_wggjk")
 
