@@ -98,7 +98,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_7stry"]
 resource_name = "page_1"
-length = 1.20001
+length = 3.00001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -107,15 +107,15 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_yr8xr"]
 resource_name = "page_2"
-length = 1.20001
+length = 3.00001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -124,10 +124,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14, 11, 12, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_tuw6p"]
@@ -183,7 +183,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vtpt1"]
 resource_name = "page_6"
-length = 1.2
+length = 4.00001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -192,10 +192,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_jk1b5"]
@@ -246,10 +246,11 @@ wait_time = 14.0
 one_shot = true
 
 [node name="Page1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3, -49)
 rotation = 0.0358935
 texture = ExtResource("2_v47mh")
-hframes = 12
+hframes = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page1"]
 libraries = {
@@ -261,7 +262,7 @@ z_index = 1
 position = Vector2(-44, -27)
 rotation = -0.0593412
 texture = ExtResource("3_hnmh8")
-hframes = 12
+hframes = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page2"]
 libraries = {
@@ -269,6 +270,7 @@ libraries = {
 }
 
 [node name="Page3" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(79.9184, -16.8161)
 rotation = 0.0610865
@@ -281,6 +283,7 @@ libraries = {
 }
 
 [node name="Page4" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-75, 4)
 rotation = -0.0474946
@@ -293,6 +296,7 @@ libraries = {
 }
 
 [node name="Page5" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(75.9183, 26.1839)
 rotation = 0.0619927
@@ -305,11 +309,12 @@ libraries = {
 }
 
 [node name="Page6" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(-69, 33)
 rotation = -0.0388771
 texture = ExtResource("7_1trb2")
-hframes = 12
+hframes = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page6"]
 libraries = {
@@ -317,10 +322,11 @@ libraries = {
 }
 
 [node name="Page7" type="Sprite2D" parent="."]
-z_index = 1
+visible = false
+z_index = 2
 position = Vector2(-2, -9)
 texture = ExtResource("8_khr5m")
-hframes = 29
+hframes = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Page7"]
 libraries = {
