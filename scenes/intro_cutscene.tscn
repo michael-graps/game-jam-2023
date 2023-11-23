@@ -330,7 +330,7 @@ libraries = {
 
 [node name="Page7" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(-2, -9)
+position = Vector2(-1, 2)
 texture = ExtResource("8_khr5m")
 hframes = 17
 
