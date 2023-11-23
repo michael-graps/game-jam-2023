@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkmfkprymsvlc"]
+[gd_scene load_steps=20 format=3 uid="uid://bkmfkprymsvlc"]
 
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_qxis0"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_k6xdm"]
 [ext_resource type="Texture2D" uid="uid://xuv6aldsubr7" path="res://assets/Video/Spritesheets/Intro_Picture1.png" id="2_v47mh"]
 [ext_resource type="Texture2D" uid="uid://cfokjvxmntdqy" path="res://assets/Video/Spritesheets/Intro_Picture2.png" id="3_hnmh8"]
 [ext_resource type="Texture2D" uid="uid://31b73bsc6yhp" path="res://assets/Video/Spritesheets/Intro_Picture3.png" id="4_qogjk"]
@@ -8,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://bxs04a102osb1" path="res://assets/Video/Spritesheets/Intro_Picture5.png" id="6_dbqxs"]
 [ext_resource type="Texture2D" uid="uid://denxnankh4nb8" path="res://assets/Video/Spritesheets/Intro_Picture6.png" id="7_1trb2"]
 [ext_resource type="Texture2D" uid="uid://bg6kq7pyr0srs" path="res://assets/Video/Spritesheets/Intro_Picture7.png" id="8_khr5m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_058s6"]
+shader = ExtResource("2_k6xdm")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/MULTIPLIER = 0.56
+shader_parameter/SCALE = 0.355
+shader_parameter/SOFTNESS = 3.655
 
 [sub_resource type="Animation" id="Animation_8gw46"]
 length = 0.001
@@ -232,21 +241,23 @@ script = ExtResource("1_qxis0")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = 12
+material = SubResource("ShaderMaterial_058s6")
+offset_left = -231.0
+offset_top = -130.0
+offset_right = 231.0
+offset_bottom = 130.0
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
-[node name="Page6Timer" type="Timer" parent="."]
-
-[node name="Page7Timer" type="Timer" parent="."]
-wait_time = 2.9
-
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 14.0
+wait_time = 21.0
 one_shot = true
 
 [node name="Page1" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-3, -49)
 rotation = 0.0358935
 texture = ExtResource("2_v47mh")
@@ -270,7 +281,6 @@ libraries = {
 }
 
 [node name="Page3" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(79.9184, -16.8161)
 rotation = 0.0610865
@@ -283,7 +293,6 @@ libraries = {
 }
 
 [node name="Page4" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-75, 4)
 rotation = -0.0474946
@@ -296,7 +305,6 @@ libraries = {
 }
 
 [node name="Page5" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(75.9183, 26.1839)
 rotation = 0.0619927
@@ -309,7 +317,6 @@ libraries = {
 }
 
 [node name="Page6" type="Sprite2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-69, 33)
 rotation = -0.0388771
@@ -322,7 +329,6 @@ libraries = {
 }
 
 [node name="Page7" type="Sprite2D" parent="."]
-visible = false
 z_index = 2
 position = Vector2(-2, -9)
 texture = ExtResource("8_khr5m")
