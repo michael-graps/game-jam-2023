@@ -32,9 +32,11 @@ var has_jumped = false
 @onready var climb_cast_left = $climb_raycast_left
 @onready var climb_cast_right = $climb_raycast_right
 @onready var climb_cast_down = $climb_raycast_down
+@onready var tile_map : TileMap = %TileMap
 var direction
 
-func _physics_process(delta):
+func _physics_process(delta):	
+	
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	
@@ -78,8 +80,6 @@ func _physics_process(delta):
 		air_jumps_current = air_jumps_total
 	
 	if was_on_floor and is_on_floor() == false and has_jumped == false:
-		print("COYOTE TIME")
-		
 		c_time.start()
 	
 
@@ -107,7 +107,19 @@ func update_animations(horizontal_direction):
 			ap.play("fall")
 
 func is_colliding_wall():
-	return ((climb_cast_left.is_colliding() or climb_cast_right.is_colliding()) and climb_cast_down.is_colliding() == false)
+	var is_climbable_l = false
+	var is_climbable_r = false
+	var tile_data_l : TileData = tile_map.get_cell_tile_data(2, tile_map.local_to_map(climb_cast_left.get_collision_point()))
+	var tile_data_r : TileData = tile_map.get_cell_tile_data(2, tile_map.local_to_map(climb_cast_right.get_collision_point()))
+	
+	if tile_data_l:
+		is_climbable_l = tile_data_l.get_custom_data("is_climbable")
+	if tile_data_r:
+		is_climbable_r = tile_data_r.get_custom_data("is_climbable")
+	
+	var is_climbable = is_climbable_l or is_climbable_r
+
+	return ((climb_cast_left.is_colliding() or climb_cast_right.is_colliding()) and is_climbable and climb_cast_down.is_colliding() == false)
 
 # Function that handles climbing #
 func climb():

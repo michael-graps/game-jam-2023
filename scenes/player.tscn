@@ -329,7 +329,8 @@ path = "event:/SFX/Footstep_Sounds"
 guid = "{fc19c021-8142-4e57-9f67-197f01396cdd}"
 name = "Footstep_Sounds"
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_xl4j1")
 event = SubResource("EventAsset_n8yi5")
 jump_time_to_peak = 0.3
@@ -352,7 +353,6 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_vd7c7")
 
