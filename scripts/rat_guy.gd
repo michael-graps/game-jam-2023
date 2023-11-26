@@ -11,9 +11,9 @@ const lines: Array[String] = [
 
 func _ready():
 	sprite.play("idle")
-	print(Callable(self, "_on_interact"))
+	#print(Callable(self, "_on_interact"))
 	interaction_area.interact = Callable(self, "_on_interact")
-	print(InteractionArea)
+	#print(InteractionArea)
 	
 func _on_interact():
 	sprite.play("talk")
