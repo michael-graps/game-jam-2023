@@ -118,6 +118,11 @@ func is_colliding_wall():
 		is_climbable_r = tile_data_r.get_custom_data("is_climbable")
 	
 	var is_climbable = is_climbable_l or is_climbable_r
+	print("Climbable")
+	print(is_climbable_l)
+	print(is_climbable_r)
+	print(is_climbable)
+	print()
 
 	return ((climb_cast_left.is_colliding() or climb_cast_right.is_colliding()) and is_climbable and climb_cast_down.is_colliding() == false)
 
