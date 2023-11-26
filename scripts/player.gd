@@ -34,6 +34,8 @@ var has_jumped = false
 @onready var climb_cast_down = $climb_raycast_down
 @onready var tile_map : TileMap = %TileMap
 var direction
+#var is_climbable_l = false
+#var is_climbable_r = false
 
 func _physics_process(delta):	
 	
@@ -105,25 +107,29 @@ func update_animations(horizontal_direction):
 			ap.queue("jump")
 		elif velocity.y > 0:
 			ap.play("fall")
-
+			
+func is_climbable(tile_data : TileData, cast : RayCast2D):
+	
+	if cast.is_colliding():
+		if tile_data:
+			return tile_data.get_custom_data("is_climbable")
+		else:
+			return false
+	else:
+		return false
+		
+func get_tile_data(cast : RayCast2D, is_left : bool):
+	if is_left:
+		return is_climbable(tile_map.get_cell_tile_data(2, get_left_tile_coords(tile_map.local_to_map(cast.get_collision_point()))), cast)
+	else:
+		return is_climbable(tile_map.get_cell_tile_data(2,tile_map.local_to_map(cast.get_collision_point())), cast)
+	
+func get_left_tile_coords(tile_vector):
+	tile_vector.x -= 1
+	return tile_vector
+		
 func is_colliding_wall():
-	var is_climbable_l = false
-	var is_climbable_r = false
-	var tile_data_l : TileData = tile_map.get_cell_tile_data(2, tile_map.local_to_map(climb_cast_left.get_collision_point()))
-	var tile_data_r : TileData = tile_map.get_cell_tile_data(2, tile_map.local_to_map(climb_cast_right.get_collision_point()))
-	
-	if tile_data_l:
-		is_climbable_l = tile_data_l.get_custom_data("is_climbable")
-	if tile_data_r:
-		is_climbable_r = tile_data_r.get_custom_data("is_climbable")
-	
-	var is_climbable = is_climbable_l or is_climbable_r
-	print("Climbable")
-	print(is_climbable_l)
-	print(is_climbable_r)
-	print(is_climbable)
-	print()
-
+	var is_climbable = get_tile_data(climb_cast_left, true) or get_tile_data(climb_cast_right, false)
 	return ((climb_cast_left.is_colliding() or climb_cast_right.is_colliding()) and is_climbable and climb_cast_down.is_colliding() == false)
 
 # Function that handles climbing #

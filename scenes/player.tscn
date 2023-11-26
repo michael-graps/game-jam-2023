@@ -357,11 +357,9 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_vd7c7")
 
 [node name="climb_raycast_right" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(6, 0)
 
 [node name="climb_raycast_left" type="RayCast2D" parent="."]
-visible = false
 target_position = Vector2(-6, 0)
 
 [node name="climb_raycast_down" type="RayCast2D" parent="."]
