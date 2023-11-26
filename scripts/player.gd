@@ -41,7 +41,6 @@ var direction
 #var is_climbable_r = false
 
 func _physics_process(delta):	
-	print(has_cheese)
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	
@@ -123,9 +122,9 @@ func is_climbable(tile_data : TileData, cast : RayCast2D):
 		
 func get_tile_data(cast : RayCast2D, is_left : bool):
 	if is_left:
-		return is_climbable(tile_map.get_cell_tile_data(2, get_left_tile_coords(tile_map.local_to_map(cast.get_collision_point()))), cast)
+		return is_climbable(tile_map.get_cell_tile_data(3, get_left_tile_coords(tile_map.local_to_map(cast.get_collision_point()))), cast)
 	else:
-		return is_climbable(tile_map.get_cell_tile_data(2,tile_map.local_to_map(cast.get_collision_point())), cast)
+		return is_climbable(tile_map.get_cell_tile_data(3,tile_map.local_to_map(cast.get_collision_point())), cast)
 	
 func get_left_tile_coords(tile_vector):
 	tile_vector.x -= 1
