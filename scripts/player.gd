@@ -33,12 +33,15 @@ var has_jumped = false
 @onready var climb_cast_right = $climb_raycast_right
 @onready var climb_cast_down = $climb_raycast_down
 @onready var tile_map : TileMap = %TileMap
+var has_cheese = false
+@onready var has_spice = false
+@onready var has_water = false
 var direction
 #var is_climbable_l = false
 #var is_climbable_r = false
 
 func _physics_process(delta):	
-	
+	print(has_cheese)
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	
@@ -156,6 +159,9 @@ func jump():
 func air_jump():
 	air_jumps_current -= 1
 	velocity.y = air_jump_velocity
+	
+func set_has_cheese():
+	has_cheese = true
 
 # This function gets horizontal velocity #
 # and also flips the sprite to face movement direction #
