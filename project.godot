@@ -20,6 +20,7 @@ config/icon="res://assets/low res coffee.jpg"
 
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 InteractionManager="*res://scenes/InteractionManager.tscn"
+PlayerCollectionsTracker="*res://scripts/player_collections.gd"
 
 [display]
 

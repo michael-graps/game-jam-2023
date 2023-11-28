@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	$VBoxContainer/IntroStart.grab_focus()
+	PlayerCollectionsTracker.resetcollections()
 	Engine.max_fps = 60
 
 func _on_intro_start_pressed():

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var event: EventAsset
 
 @export var move_speed : float = 200
-@export var air_jumps_total : int = 1
+@export var air_jumps_total : int = 0
 var air_jumps_current : int = air_jumps_total
 
 var is_climbing = false
@@ -37,14 +37,15 @@ var has_cheese = false
 @onready var has_spice = false
 @onready var has_water = false
 var direction
+var airjumpenabled = 0
 #var is_climbable_l = false
 #var is_climbable_r = false
+
+
 
 func _physics_process(delta):	
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
-	
-	
 	
 	if is_on_floor():
 		has_jumped = false
@@ -88,18 +89,20 @@ func _physics_process(delta):
 	if was_on_floor and is_on_floor() == false and has_jumped == false:
 		c_time.start()
 	
+	if airjumpenabled == 0:
+		airjump_enabler()
+	
+	
+
+func airjump_enabler():
+	if PlayerCollectionsTracker.part1_got == 1:
+		air_jumps_total = 1
+		air_jumps_current = air_jumps_total
+		airjumpenabled = 1
 
 # Function that gives you gravity as a float #
 func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
-
-
-func pickup_list():
-	if Input.is_action_just_pressed("interact_button"):
-		for body in $Area2D.get_overlapping_bodies():
-			if body.is_in_group("ingredientslist"):
-				body.queue_free()
-				print("EGGS")
 
 func update_animations(horizontal_direction):
 	if is_on_floor():

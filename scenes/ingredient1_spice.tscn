@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://shhpu570kho1"]
+
+[ext_resource type="Script" path="res://scripts/ingredient1_spice.gd" id="1_hu4i6"]
+[ext_resource type="Texture2D" uid="uid://c2ofgu2x27rhq" path="res://assets/SpiceJar.png" id="1_wjnqm"]
+[ext_resource type="EventAsset" uid="uid://wq8uf6e6dq2k" path="res://addons/FMOD/editor/resources/events/{49af4c17-37d4-495e-99d1-16d6316d358b}.tres" id="2_iwtic"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_oh377"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wcre"]
+size = Vector2(34, 45)
+
+[node name="ingredient1_spice" type="Node2D"]
+script = ExtResource("1_hu4i6")
+event = ExtResource("2_iwtic")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wjnqm")
+offset = Vector2(0.595, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2.5)
+shape = SubResource("RectangleShape2D_1wcre")
+
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+num_banks = 1
+bank_0 = ExtResource("4_oh377")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
