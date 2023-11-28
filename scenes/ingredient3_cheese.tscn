@@ -1,48 +1,48 @@
-[gd_scene load_steps=17 format=3 uid="uid://shhpu570kho1"]
+[gd_scene load_steps=17 format=3 uid="uid://dibt8o34mxlmw"]
 
-[ext_resource type="Script" path="res://scripts/ingredient1_spice.gd" id="1_hu4i6"]
-[ext_resource type="Texture2D" uid="uid://c2ofgu2x27rhq" path="res://assets/SpiceJar.png" id="1_wjnqm"]
-[ext_resource type="EventAsset" uid="uid://wq8uf6e6dq2k" path="res://addons/FMOD/editor/resources/events/{49af4c17-37d4-495e-99d1-16d6316d358b}.tres" id="2_iwtic"]
-[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_oh377"]
-[ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="4_oiecr"]
+[ext_resource type="Script" path="res://scripts/ingredient3_cheese.gd" id="1_rny2e"]
+[ext_resource type="Texture2D" uid="uid://twbxyb7qy8u0" path="res://assets/cheese.png" id="1_v31fx"]
+[ext_resource type="EventAsset" uid="uid://fip6qbays1a7" path="res://addons/FMOD/editor/resources/events/{ed73599a-4892-4e13-a41d-e30a7bd71557}.tres" id="2_5nwyn"]
+[ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="3_r8djw"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="5_cx6k1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hoqr"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwcuk"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8ob1"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae5aj"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt1kn"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xx5k"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8pbu"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3sr6"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltvay"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("3_r8djw")
 region = Rect2(256, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cga1l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqfg3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -77,31 +77,27 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wcre"]
-size = Vector2(34, 45)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olx2c"]
+size = Vector2(35, 23)
 
-[node name="ingredient1_spice" type="Node2D"]
-script = ExtResource("1_hu4i6")
-event = ExtResource("2_iwtic")
+[node name="ingredient3_cheese" type="Node2D"]
+script = ExtResource("1_rny2e")
+event = ExtResource("2_5nwyn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wjnqm")
-offset = Vector2(0.595, 0)
+texture = ExtResource("1_v31fx")
 
 [node name="Sparkle" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, -7)
-sprite_frames = SubResource("SpriteFrames_cga1l")
+sprite_frames = SubResource("SpriteFrames_pqfg3")
 animation = &"sparkle"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(1, 2.5)
-shape = SubResource("RectangleShape2D_1wcre")
+position = Vector2(-0.5, -3.5)
+shape = SubResource("RectangleShape2D_olx2c")
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="."]
 num_banks = 1
-bank_0 = ExtResource("4_oh377")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+bank_0 = ExtResource("5_cx6k1")

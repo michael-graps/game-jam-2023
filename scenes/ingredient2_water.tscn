@@ -1,48 +1,48 @@
-[gd_scene load_steps=17 format=3 uid="uid://shhpu570kho1"]
+[gd_scene load_steps=17 format=3 uid="uid://dwsacsdoa51lh"]
 
-[ext_resource type="Script" path="res://scripts/ingredient1_spice.gd" id="1_hu4i6"]
-[ext_resource type="Texture2D" uid="uid://c2ofgu2x27rhq" path="res://assets/SpiceJar.png" id="1_wjnqm"]
-[ext_resource type="EventAsset" uid="uid://wq8uf6e6dq2k" path="res://addons/FMOD/editor/resources/events/{49af4c17-37d4-495e-99d1-16d6316d358b}.tres" id="2_iwtic"]
-[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_oh377"]
-[ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="4_oiecr"]
+[ext_resource type="Script" path="res://scripts/ingredient2_water.gd" id="1_pvsqr"]
+[ext_resource type="EventAsset" uid="uid://b6on4cj3c0vgo" path="res://addons/FMOD/editor/resources/events/{3fd5b35d-4a12-45c8-9ea9-11d0bd8ec620}.tres" id="2_tvnhh"]
+[ext_resource type="Texture2D" uid="uid://cimirtn4vrhou" path="res://assets/PondWater.png" id="3_kunuc"]
+[ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="4_6drh5"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_cbfiq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hoqr"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwcuk"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8ob1"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae5aj"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt1kn"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xx5k"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8pbu"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3sr6"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltvay"]
-atlas = ExtResource("4_oiecr")
+atlas = ExtResource("4_6drh5")
 region = Rect2(256, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cga1l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ear1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -77,31 +77,29 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wcre"]
-size = Vector2(34, 45)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6fwg"]
+size = Vector2(42, 58)
 
-[node name="ingredient1_spice" type="Node2D"]
-script = ExtResource("1_hu4i6")
-event = ExtResource("2_iwtic")
+[node name="ingredient2_water" type="Node2D"]
+script = ExtResource("1_pvsqr")
+event = ExtResource("2_tvnhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wjnqm")
-offset = Vector2(0.595, 0)
+texture = ExtResource("3_kunuc")
 
 [node name="Sparkle" type="AnimatedSprite2D" parent="."]
-position = Vector2(-7, -7)
-sprite_frames = SubResource("SpriteFrames_cga1l")
+position = Vector2(-11, -13)
+sprite_frames = SubResource("SpriteFrames_4ear1")
 animation = &"sparkle"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-position = Vector2(1, 2.5)
-shape = SubResource("RectangleShape2D_1wcre")
+shape = SubResource("RectangleShape2D_y6fwg")
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="."]
 num_banks = 1
-bank_0 = ExtResource("4_oh377")
+bank_0 = ExtResource("4_cbfiq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
