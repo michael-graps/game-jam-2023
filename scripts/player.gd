@@ -44,6 +44,8 @@ func _physics_process(delta):
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	
+	
+	
 	if is_on_floor():
 		has_jumped = false
 
@@ -91,6 +93,13 @@ func _physics_process(delta):
 func get_gravity() -> float:
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
 
+
+func pickup_list():
+	if Input.is_action_just_pressed("interact_button"):
+		for body in $Area2D.get_overlapping_bodies():
+			if body.is_in_group("ingredientslist"):
+				body.queue_free()
+				print("EGGS")
 
 func update_animations(horizontal_direction):
 	if is_on_floor():
