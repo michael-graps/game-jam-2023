@@ -112,6 +112,7 @@ position = Vector2(-8, -16)
 sprite_frames = SubResource("SpriteFrames_0xopl")
 animation = &"talk"
 centered = false
+flip_h = true
 
 [node name="InteractionArea" type="Area2D" parent="."]
 collision_layer = 2
