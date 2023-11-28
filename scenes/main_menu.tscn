@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpawajjyn1e18"]
+[gd_scene load_steps=9 format=3 uid="uid://bpawajjyn1e18"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_1i2r5"]
+[ext_resource type="Texture2D" uid="uid://dckvb31pv27wq" path="res://assets/Menu_Play_Unpressed.png" id="2_2ujsw"]
+[ext_resource type="Texture2D" uid="uid://3lhq2dqhx812" path="res://assets/Menu_SkipIntro_Unpressed.png" id="3_f57hq"]
+[ext_resource type="Texture2D" uid="uid://biawahf20wh0i" path="res://assets/Menu_Quit_Unpressed.png" id="4_piqj6"]
+[ext_resource type="Texture2D" uid="uid://8w4j7fj10s4" path="res://assets/Menu_Play_Pressed.png" id="5_k1x5e"]
+[ext_resource type="Texture2D" uid="uid://ck76842ovktka" path="res://assets/Menu_SkipIntro_Pressed.png" id="6_j7dew"]
+[ext_resource type="Texture2D" uid="uid://bfrffrq1hcu38" path="res://assets/Menu_Quit_Pressed.png" id="7_dgmm3"]
 
 [sub_resource type="Theme" id="Theme_dg513"]
 
@@ -9,50 +15,111 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -38.0
+offset_right = 98.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1i2r5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -47.5
-offset_top = -68.0
-offset_right = 47.5
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_dg513")
-
-[node name="IntroStart" type="Button" parent="VBoxContainer"]
+[node name="IntroStart" type="Button" parent="."]
+visible = false
+layout_direction = 3
 layout_mode = 2
+offset_left = 874.15
+offset_top = 122.0
+offset_right = 1014.15
+offset_bottom = 194.0
 focus_neighbor_bottom = NodePath("../QuickStart")
-text = "Intro Start"
+icon = ExtResource("2_2ujsw")
+flat = true
+alignment = 2
+icon_alignment = 1
 
-[node name="QuickStart" type="Button" parent="VBoxContainer"]
+[node name="QuickStart" type="Button" parent="."]
+visible = false
 layout_mode = 2
+offset_left = -66.0
+offset_top = 122.0
+offset_right = 164.0
+offset_bottom = 194.0
 focus_neighbor_top = NodePath("../IntroStart")
-focus_neighbor_bottom = NodePath("../OptionsButton")
-text = "Quick Start"
+focus_neighbor_bottom = NodePath("../QuitButton")
+icon = ExtResource("3_f57hq")
+flat = true
+icon_alignment = 1
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
+offset_left = -66.0
+offset_top = 122.0
+offset_right = 164.0
+offset_bottom = 153.0
 focus_neighbor_top = NodePath("../QuickStart")
 focus_neighbor_bottom = NodePath("../QuitButton")
 text = "Options
 "
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="."]
+visible = false
 layout_mode = 2
+offset_left = -66.0
+offset_top = 122.0
+offset_right = 164.0
+offset_bottom = 194.0
 focus_neighbor_top = NodePath("../OptionsButton")
-text = "Quit
-"
+icon = ExtResource("4_piqj6")
+flat = true
+icon_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/IntroStart" to="." method="_on_intro_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuickStart" to="." method="_on_quick_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.57
+anchor_top = 0.695
+anchor_right = 0.57
+anchor_bottom = 0.695
+offset_left = -144.64
+offset_top = -226.36
+offset_right = -16.6401
+offset_bottom = -26.36
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.265, 2.265)
+theme = SubResource("Theme_dg513")
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../SkipIntro")
+texture_normal = ExtResource("2_2ujsw")
+texture_pressed = ExtResource("5_k1x5e")
+texture_hover = ExtResource("5_k1x5e")
+
+[node name="SkipIntro" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Quit")
+texture_normal = ExtResource("3_f57hq")
+texture_pressed = ExtResource("6_j7dew")
+texture_hover = ExtResource("6_j7dew")
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+focus_neighbor_top = NodePath("../SkipIntro")
+texture_normal = ExtResource("4_piqj6")
+texture_pressed = ExtResource("7_dgmm3")
+texture_hover = ExtResource("7_dgmm3")
+
+[connection signal="pressed" from="IntroStart" to="." method="_on_intro_start_pressed"]
+[connection signal="pressed" from="QuickStart" to="." method="_on_quick_start_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
