@@ -137,7 +137,6 @@ layer_4/tile_data = PackedInt32Array(1703980, 524293, 16, 1769516, 524293, 17, 1
 
 [node name="Player" parent="." instance=ExtResource("3_ydmw3")]
 position = Vector2(-357, 638)
-air_jumps_total = 1
 
 [node name="FollowCamera" type="Camera2D" parent="Player"]
 visible = false
