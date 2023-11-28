@@ -6,3 +6,6 @@ class_name FmodTrigger
 
 func walk_sound_trigger():
 	FMODRuntime.play_one_shot(event)
+
+func jump_sound_trigger():
+	FMODRuntime.play_one_shot(event)

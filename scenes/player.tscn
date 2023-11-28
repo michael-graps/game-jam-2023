@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://du04s5w4lm05f"]
+[gd_scene load_steps=30 format=3 uid="uid://du04s5w4lm05f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xl4j1"]
 [ext_resource type="Texture2D" uid="uid://bcgv3d2ew8mpd" path="res://assets/Smol_SpriteSheet.png" id="2_7r755"]
@@ -205,6 +205,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(1, 2), Vector2i(2, 2)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FmodTriggerJump")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"jump_sound_trigger"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_j1yd3"]
 resource_name = "land"
@@ -312,6 +326,15 @@ _data = {
 radius = 5.0
 height = 14.0
 
+[sub_resource type="EventAsset" id="EventAsset_07cj8"]
+is_3d = true
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Jump_Sounds"
+guid = "{6ad5b499-bfbf-44a6-904a-5acaf2f55f1b}"
+name = "Jump_Sounds"
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_xl4j1")
@@ -356,11 +379,15 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 1
+num_banks = 1
+bank_0 = ExtResource("4_57e0g")
+
 [node name="FmodTrigger" type="Node" parent="."]
 script = ExtResource("3_sbiwu")
 event = ExtResource("4_v5ro0")
 
-[node name="StudioBankLoader" type="StudioBankLoader" parent="FmodTrigger"]
-load_on = 1
-num_banks = 1
-bank_0 = ExtResource("4_57e0g")
+[node name="FmodTriggerJump" type="Node" parent="."]
+script = ExtResource("3_sbiwu")
+event = SubResource("EventAsset_07cj8")
