@@ -29,6 +29,7 @@ var has_jumped = false
 
 @onready var c_time = $coyote_timer
 @onready var ap = $Sprite/AnimationPlayer
+@onready var glow = $mushroom_glow/glow_player
 @onready var climb_cast_left = $climb_raycast_left
 @onready var climb_cast_right = $climb_raycast_right
 @onready var climb_cast_down = $climb_raycast_down
@@ -41,6 +42,8 @@ var airjumpenabled = 0
 #var is_climbable_l = false
 #var is_climbable_r = false
 
+func _ready():
+	glow.play("glow")
 
 
 func _physics_process(delta):	
