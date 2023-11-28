@@ -1078,4 +1078,8 @@ position = Vector2(1929, 578)
 [node name="walltorch_left51" parent="." instance=ExtResource("9_kmc0n")]
 position = Vector2(1641, 155)
 
+[node name="walltorch_left52" parent="." instance=ExtResource("9_kmc0n")]
+z_index = -8
+position = Vector2(3052, 118)
+
 [connection signal="body_entered" from="area2_transition" to="." method="_on_area_2_transition_body_entered"]
