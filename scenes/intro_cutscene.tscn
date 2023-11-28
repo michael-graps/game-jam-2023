@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkmfkprymsvlc"]
+[gd_scene load_steps=22 format=3 uid="uid://bkmfkprymsvlc"]
 
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_qxis0"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_k6xdm"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bxs04a102osb1" path="res://assets/Video/Spritesheets/Intro_Picture5.png" id="6_dbqxs"]
 [ext_resource type="Texture2D" uid="uid://denxnankh4nb8" path="res://assets/Video/Spritesheets/Intro_Picture6.png" id="7_1trb2"]
 [ext_resource type="Texture2D" uid="uid://bg6kq7pyr0srs" path="res://assets/Video/Spritesheets/Intro_Picture7.png" id="8_khr5m"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="10_b4mea"]
+[ext_resource type="EventAsset" uid="uid://dncwkkb7bk28y" path="res://addons/FMOD/editor/resources/events/{59afbb7f-a47f-4d49-a25f-1a4299ffaf99}.tres" id="10_x6af4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_058s6"]
 shader = ExtResource("2_k6xdm")
@@ -250,11 +252,11 @@ offset_right = 231.0
 offset_bottom = 130.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 3.1
 one_shot = true
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 21.0
+wait_time = 21.7
 one_shot = true
 
 [node name="Page1" type="Sprite2D" parent="."]
@@ -338,3 +340,14 @@ hframes = 17
 libraries = {
 "": SubResource("AnimationLibrary_vqcar")
 }
+
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 1
+num_banks = 1
+bank_0 = ExtResource("10_b4mea")
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 1
+event = ExtResource("10_x6af4")
+
+[node name="StudioListener2D" type="StudioListener2D" parent="."]

@@ -1,16 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://dr3f5ctgmcedb"]
 
-[ext_resource type="Script" path="res://scripts/ingredients_list.gd" id="1_bdbam"]
 [ext_resource type="Texture2D" uid="uid://7h1nm2lx6wmq" path="res://assets/IngredientsList-Sprite.png" id="1_kh3xd"]
+[ext_resource type="Script" path="res://scripts/InteractionArea.gd" id="2_p85w4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dpoyn"]
-radius = 55.3263
+[sub_resource type="CircleShape2D" id="CircleShape2D_tb2ql"]
+radius = 56.0803
 
-[node name="ingredients_list" type="Area2D" groups=["ingredientslist"]]
-script = ExtResource("1_bdbam")
+[node name="ingredients_list" type="Node2D" groups=["ingredientslist"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kh3xd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dpoyn")
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("2_p85w4")
+action_name = "pick_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_tb2ql")
