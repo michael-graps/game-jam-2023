@@ -1,8 +1,10 @@
 extends Node2D
 
 @export var event: EventAsset
+@onready var ap = $Sparkle
 
 func _ready():
+	ap.play("sparkle")
 	if PlayerCollectionsTracker.part2_got == 1:
 		queue_free()
 
