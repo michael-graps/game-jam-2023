@@ -121,16 +121,34 @@ texture = ExtResource("6_5mps3")
 texture_scale = 0.25
 height = 415.0
 
+[node name="ceiling_light1" type="PointLight2D" parent="ceiling_light1"]
+z_index = 1
+position = Vector2(265.704, 81.6879)
+scale = Vector2(0.796, 0.34873)
+energy = 0.25
+texture = ExtResource("6_5mps3")
+texture_scale = 0.25
+height = 415.0
+
+[node name="ceiling_light1" type="PointLight2D" parent="ceiling_light1/ceiling_light1"]
+z_index = 1
+position = Vector2(501.881, -59.1397)
+scale = Vector2(0.796, 0.554961)
+energy = 0.25
+texture = ExtResource("6_5mps3")
+texture_scale = 0.25
+height = 415.0
+
 [node name="bg_enviroment" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.419608)
 z_index = -6
-position = Vector2(10.7719, 14)
-scale = Vector2(1.1127, 1.09091)
+position = Vector2(-35.9999, 14)
+scale = Vector2(1.16484, 1.09091)
 texture = ExtResource("6_7cbsg")
 centered = false
 
 [node name="bg_environment_colour" type="Sprite2D" parent="."]
 z_index = -15
-position = Vector2(504, 513)
+position = Vector2(520, 493)
 scale = Vector2(3.83212, 3.83212)
 texture = ExtResource("7_3pjag")
