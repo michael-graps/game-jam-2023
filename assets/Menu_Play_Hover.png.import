@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8w4j7fj10s4"
-path="res://.godot/imported/Menu_Play_Pressed.png-be194e23cb3ddd6388db018d93d75d2c.ctex"
+path="res://.godot/imported/Menu_Play_Hover.png-64955e42b9abc485851bb477bc3470c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Menu_Play_Pressed.png"
-dest_files=["res://.godot/imported/Menu_Play_Pressed.png-be194e23cb3ddd6388db018d93d75d2c.ctex"]
+source_file="res://assets/Menu_Play_Hover.png"
+dest_files=["res://.godot/imported/Menu_Play_Hover.png-64955e42b9abc485851bb477bc3470c0.ctex"]
 
 [params]
 
