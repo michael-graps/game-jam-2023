@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://4m5gws42ibua"]
+[gd_scene load_steps=11 format=3 uid="uid://4m5gws42ibua"]
 
 [ext_resource type="TileSet" uid="uid://ctg6dr0njagb1" path="res://TileSets/MainTerrain1.tres" id="1_3w1kp"]
+[ext_resource type="Script" path="res://scripts/area3_attic.gd" id="1_fbhbu"]
 [ext_resource type="PackedScene" uid="uid://du04s5w4lm05f" path="res://scenes/player.tscn" id="2_l4e4s"]
 [ext_resource type="PackedScene" uid="uid://shhpu570kho1" path="res://scenes/ingredient1_spice.tscn" id="3_wl8ws"]
 [ext_resource type="PackedScene" uid="uid://g1kmgnkhdpdu" path="res://scenes/walltorch_left.tscn" id="4_i8q3n"]
@@ -8,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dnpvis0ffxgcq" path="res://assets/Lamp Light Mask.png" id="6_5mps3"]
 [ext_resource type="Texture2D" uid="uid://1joymdqm84c3" path="res://assets/Attic_BG_2.png" id="6_7cbsg"]
 [ext_resource type="Texture2D" uid="uid://b3ogg0e7ccen1" path="res://assets/Attic_Colour.png" id="7_3pjag"]
+[ext_resource type="PackedScene" uid="uid://c8w385nvk2yat" path="res://scenes/attic_platform.tscn" id="9_2bfes"]
 
 [node name="area3_attic" type="Node2D"]
+script = ExtResource("1_fbhbu")
 
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -114,26 +117,26 @@ position = Vector2(344, 64)
 
 [node name="ceiling_light1" type="PointLight2D" parent="."]
 z_index = 1
-position = Vector2(149.5, 502.5)
-scale = Vector2(0.796, 3.268)
+position = Vector2(152, 503)
+scale = Vector2(0.628067, 3.2722)
 energy = 0.25
 texture = ExtResource("6_5mps3")
 texture_scale = 0.25
 height = 415.0
 
-[node name="ceiling_light1" type="PointLight2D" parent="ceiling_light1"]
+[node name="ceiling_light3" type="PointLight2D" parent="."]
 z_index = 1
-position = Vector2(265.704, 81.6879)
-scale = Vector2(0.796, 0.34873)
+position = Vector2(361, 769.456)
+scale = Vector2(0.633616, 1.13965)
 energy = 0.25
 texture = ExtResource("6_5mps3")
 texture_scale = 0.25
 height = 415.0
 
-[node name="ceiling_light1" type="PointLight2D" parent="ceiling_light1/ceiling_light1"]
+[node name="ceiling_light2" type="PointLight2D" parent="."]
 z_index = 1
-position = Vector2(501.881, -59.1397)
-scale = Vector2(0.796, 0.554961)
+position = Vector2(679, 702.057)
+scale = Vector2(0.504358, 0.632461)
 energy = 0.25
 texture = ExtResource("6_5mps3")
 texture_scale = 0.25
@@ -152,3 +155,6 @@ z_index = -15
 position = Vector2(520, 493)
 scale = Vector2(3.83212, 3.83212)
 texture = ExtResource("7_3pjag")
+
+[node name="attic_platform" parent="." instance=ExtResource("9_2bfes")]
+position = Vector2(16, 16)
