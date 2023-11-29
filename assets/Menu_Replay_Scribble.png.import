@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-uid="uid://c70tmafdidejf"
-=======
-uid="uid://drglgxxk8sruq"
->>>>>>> Stashed changes
-path="res://.godot/imported/Menu_BG_Spritesheet.png-7362650cb3045a0ec908be8477050074.ctex"
+uid="uid://888jq1b245he"
+path="res://.godot/imported/Menu_Replay_Scribble.png-e23132e108301a6aaad2ee3a239d54fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Video/Spritesheets/Menu_BG_Spritesheet.png"
-dest_files=["res://.godot/imported/Menu_BG_Spritesheet.png-7362650cb3045a0ec908be8477050074.ctex"]
+source_file="res://assets/Menu_Replay_Scribble.png"
+dest_files=["res://.godot/imported/Menu_Replay_Scribble.png-e23132e108301a6aaad2ee3a239d54fd.ctex"]
 
 [params]
 
