@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bkmfkprymsvlc"]
+[gd_scene load_steps=23 format=3 uid="uid://bkmfkprymsvlc"]
 
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_qxis0"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_k6xdm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bg6kq7pyr0srs" path="res://assets/Video/Spritesheets/Intro_Picture7.png" id="8_khr5m"]
 [ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="10_b4mea"]
 [ext_resource type="EventAsset" uid="uid://dncwkkb7bk28y" path="res://addons/FMOD/editor/resources/events/{59afbb7f-a47f-4d49-a25f-1a4299ffaf99}.tres" id="10_x6af4"]
+[ext_resource type="Texture2D" uid="uid://dpspi3dgpvmti" path="res://assets/intro_cutscene_background.png" id="12_xdpjo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_058s6"]
 shader = ExtResource("2_k6xdm")
@@ -351,3 +352,9 @@ play_event = 1
 event = ExtResource("10_x6af4")
 
 [node name="StudioListener2D" type="StudioListener2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -17
+position = Vector2(-1, 1)
+scale = Vector2(0.792878, 0.792878)
+texture = ExtResource("12_xdpjo")
