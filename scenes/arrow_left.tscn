@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cywonld0q4f78"]
+
+[ext_resource type="Script" path="res://scripts/arrow_pointy.gd" id="1_pfu0j"]
+[ext_resource type="Texture2D" uid="uid://waevifuh3cem" path="res://assets/Video/Spritesheets/arrow_left.png" id="2_31cmo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8cag"]
+atlas = ExtResource("2_31cmo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qix5n"]
+atlas = ExtResource("2_31cmo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvlr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8cag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qix5n")
+}],
+"loop": true,
+"name": &"pointy",
+"speed": 1.5
+}]
+
+[node name="arrow_left" type="Node2D"]
+z_index = -1
+script = ExtResource("1_pfu0j")
+
+[node name="arrow" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uvlr3")
+animation = &"pointy"
+frame_progress = 0.497786

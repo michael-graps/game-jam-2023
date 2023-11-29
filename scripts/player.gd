@@ -44,9 +44,30 @@ var airjumpenabled = 0
 
 func _ready():
 	glow.play("glow")
+	if PlayerPositionManager.prev_area == 1:
+		position.x = 1738
+		position.y = 383
+	elif PlayerPositionManager.prev_area == 2:
+		position.x = -357
+		position.y = 638
+	elif PlayerPositionManager.prev_area == 3:
+		position.x = 2
+		position.y = 106
+	elif PlayerPositionManager.prev_area == 4:
+		position.x = 3463
+		position.y = 160
+	elif PlayerPositionManager.prev_area == 5:
+		position.x = 3456
+		position.y = -561
+	elif PlayerPositionManager.prev_area == 6:
+		position.x = 1158
+		position.y = 287
+	else:
+		pass
 
 
-func _physics_process(delta):	
+
+func _physics_process(delta):
 	if is_on_floor() or is_colliding_wall() == false:           # Checks to see if you're on the floor, sets is_climbing accordingly #
 		is_climbing = false
 	
@@ -176,6 +197,7 @@ func air_jump():
 	
 func set_has_cheese():
 	has_cheese = true
+
 
 # This function gets horizontal velocity #
 # and also flips the sprite to face movement direction #

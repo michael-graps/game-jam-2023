@@ -9,11 +9,18 @@ extends Node2D
 
 func _on_area_1_transition_body_entered(body):
 	print("Teleporting to Area 1: The Basement")
+	PlayerPositionManager.set_prev_area(4)
+	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
+
+func _on_area_1_top_transition_body_entered(body):
+	print("Teleporting to Area 1: The Basement Top")
+	PlayerPositionManager.set_prev_area(5)
 	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
 
 
 func _on_area_3_transition_body_entered(body):
 	print("Teleporting to Area 3: The Attic")
+	PlayerPositionManager.set_prev_area(3)
 	get_tree().change_scene_to_file("res://scenes/area3_attic.tscn")
 
 func _ready():
@@ -24,4 +31,7 @@ func _ready():
 	candle_ap4.play("candle_light")
 	candle_ap5.play("candle_light")
 	candle_ap6.play("candle_light")
+
+
+
 

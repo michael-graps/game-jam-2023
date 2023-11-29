@@ -1,0 +1,163 @@
+[gd_scene load_steps=18 format=3 uid="uid://1m0i400lygc1"]
+
+[ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="1_c6lxd"]
+[ext_resource type="Script" path="res://scripts/pot_guide.gd" id="1_i2hs1"]
+[ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="3_4cxgg"]
+
+[sub_resource type="Animation" id="Animation_1qghv"]
+resource_name = "light_movement"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_s5a0m"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8djw"]
+_data = {
+"RESET": SubResource("Animation_s5a0m"),
+"light_movement": SubResource("Animation_1qghv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvnfc"]
+size = Vector2(73, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hoqr"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwcuk"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8ob1"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae5aj"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt1kn"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xx5k"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8pbu"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3sr6"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltvay"]
+atlas = ExtResource("3_4cxgg")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elhk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hoqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwcuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8ob1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae5aj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt1kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xx5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8pbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3sr6")
+}, {
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_ltvay")
+}],
+"loop": true,
+"name": &"sparkle",
+"speed": 20.0
+}]
+
+[node name="pot_guide" type="Node2D"]
+script = ExtResource("1_i2hs1")
+
+[node name="light" type="PointLight2D" parent="."]
+color = Color(1, 1, 0, 1)
+energy = 0.63
+texture = ExtResource("1_c6lxd")
+
+[node name="light_player" type="AnimationPlayer" parent="light"]
+libraries = {
+"": SubResource("AnimationLibrary_r8djw")
+}
+
+[node name="interaction_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
+position = Vector2(-71.5, -3)
+shape = SubResource("RectangleShape2D_pvnfc")
+
+[node name="Sparkle" type="AnimatedSprite2D" parent="interaction_area"]
+position = Vector2(-71, 1)
+sprite_frames = SubResource("SpriteFrames_elhk0")
+animation = &"sparkle"
+
+[connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]

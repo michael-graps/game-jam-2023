@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://235ujntagi0r"]
+[gd_scene load_steps=12 format=3 uid="uid://235ujntagi0r"]
 
 [ext_resource type="Texture2D" uid="uid://g1071xk8glfi" path="res://assets/Video/Spritesheets/EndScreen_SpriteSheet.png" id="1_5rtgg"]
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_rq0xj"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_l4pyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7brj"]
@@ -62,6 +63,7 @@ shader_parameter/SCALE = 0.355
 shader_parameter/SOFTNESS = 3.655
 
 [node name="end_screen" type="Node2D"]
+script = ExtResource("1_rq0xj")
 
 [node name="end_animation" type="AnimatedSprite2D" parent="."]
 z_index = -9

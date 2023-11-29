@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5o3k6ma3bim8"
-path="res://.godot/imported/Menu_BG_Spritesheet.png-7362650cb3045a0ec908be8477050074.ctex"
+uid="uid://dtgnbta23rivw"
+path="res://.godot/imported/arrow_right.png-d7f4c2a30a24637e44ed828f6ef3d556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Video/Spritesheets/Menu_BG_Spritesheet.png"
-dest_files=["res://.godot/imported/Menu_BG_Spritesheet.png-7362650cb3045a0ec908be8477050074.ctex"]
+source_file="res://assets/Video/Spritesheets/arrow_right.png"
+dest_files=["res://.godot/imported/arrow_right.png-d7f4c2a30a24637e44ed828f6ef3d556.ctex"]
 
 [params]
 

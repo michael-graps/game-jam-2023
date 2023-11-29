@@ -357,11 +357,6 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
-[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
-load_on = 1
-num_banks = 1
-bank_0 = ExtResource("4_57e0g")
-
 [node name="FmodTrigger" type="Node" parent="."]
 script = ExtResource("3_sbiwu")
 event = ExtResource("4_v5ro0")
@@ -369,6 +364,11 @@ event = ExtResource("4_v5ro0")
 [node name="FmodTriggerJump" type="Node" parent="."]
 script = ExtResource("3_sbiwu")
 event = SubResource("EventAsset_07cj8")
+
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 1
+num_banks = 1
+bank_0 = ExtResource("4_57e0g")
 
 [node name="mushroom_glow" type="PointLight2D" parent="."]
 position = Vector2(0, -7)
