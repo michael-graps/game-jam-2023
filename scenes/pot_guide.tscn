@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://1m0i400lygc1"]
+[gd_scene load_steps=19 format=3 uid="uid://1m0i400lygc1"]
 
 [ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="1_c6lxd"]
 [ext_resource type="Script" path="res://scripts/pot_guide.gd" id="1_i2hs1"]
 [ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="3_4cxgg"]
+[ext_resource type="Texture2D" uid="uid://ijxvfrpghu00" path="res://assets/interact_button.png" id="4_mbxu8"]
 
 [sub_resource type="Animation" id="Animation_1qghv"]
 resource_name = "light_movement"
@@ -140,6 +141,7 @@ animations = [{
 script = ExtResource("1_i2hs1")
 
 [node name="light" type="PointLight2D" parent="."]
+position = Vector2(112, 0)
 color = Color(1, 1, 0, 1)
 energy = 0.63
 texture = ExtResource("1_c6lxd")
@@ -150,14 +152,19 @@ libraries = {
 }
 
 [node name="interaction_area" type="Area2D" parent="."]
+z_index = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_area"]
-position = Vector2(-71.5, -3)
+z_index = 4
 shape = SubResource("RectangleShape2D_pvnfc")
 
 [node name="Sparkle" type="AnimatedSprite2D" parent="interaction_area"]
-position = Vector2(-71, 1)
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_elhk0")
 animation = &"sparkle"
 
+[node name="ui" type="Sprite2D" parent="."]
+texture = ExtResource("4_mbxu8")
+
 [connection signal="body_entered" from="interaction_area" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="interaction_area" to="." method="_on_interaction_area_body_exited"]

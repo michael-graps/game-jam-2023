@@ -8,12 +8,12 @@ extends Node2D
 @onready var candle_ap6 = $candle_light6/candle_player
 
 func _on_area_1_transition_body_entered(body):
-	print("Teleporting to Area 1: The Basement")
+	print("Teleporting to Area 1: The Basement END")
 	PlayerPositionManager.set_prev_area(4)
 	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
 
 func _on_area_1_top_transition_body_entered(body):
-	print("Teleporting to Area 1: The Basement Top")
+	print("Teleporting to Area 1: The Basement TOP")
 	PlayerPositionManager.set_prev_area(5)
 	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
 

@@ -3,7 +3,7 @@ extends Node
 var list_got = 0
 var part1_got = 0
 var part2_got = 0
-var part3_got = 0
+var part3_got = 1
 var everything_got = 0
 
 func resetcollections():
@@ -30,3 +30,10 @@ func allgotten_check():
 		everything_got = 1
 	else:
 		pass
+
+func giveeverything():
+	var list_got = 1
+	var part1_got = 1
+	var part2_got = 1
+	var part3_got = 1
+	var everything_got = 1

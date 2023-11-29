@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyq8nwkixsyy6"]
 
 [ext_resource type="Script" path="res://scripts/InteractionManager.gd" id="1_kpgl8"]
-[ext_resource type="Texture2D" uid="uid://opc8la8ryn65" path="res://assets/1-Bit Input Prompts/Tiles (White)/tile_0313.png" id="2_m2ub2"]
+[ext_resource type="Texture2D" uid="uid://ijxvfrpghu00" path="res://assets/interact_button.png" id="2_bv4lm"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_kpgl8")
@@ -9,4 +9,4 @@ script = ExtResource("1_kpgl8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 20
 position = Vector2(0, 8)
-texture = ExtResource("2_m2ub2")
+texture = ExtResource("2_bv4lm")
