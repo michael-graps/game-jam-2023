@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://235ujntagi0r"]
+
+[ext_resource type="Texture2D" uid="uid://g1071xk8glfi" path="res://assets/Video/Spritesheets/EndScreen_SpriteSheet.png" id="1_5rtgg"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_l4pyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7brj"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(0, 0, 2624, 1476)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sqjf"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(2624, 0, 2624, 1476)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we0xd"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(5248, 0, 2624, 1476)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrn8t"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(7872, 0, 2624, 1476)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekmpg"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(10496, 0, 2624, 1476)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3q8d"]
+atlas = ExtResource("1_5rtgg")
+region = Rect2(13120, 0, 2624, 1476)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gueck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7brj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sqjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we0xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrn8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekmpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3q8d")
+}],
+"loop": true,
+"name": &"endscreen_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qpvrt"]
+shader = ExtResource("2_l4pyp")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/MULTIPLIER = 0.56
+shader_parameter/SCALE = 0.355
+shader_parameter/SOFTNESS = 3.655
+
+[node name="end_screen" type="Node2D"]
+
+[node name="end_animation" type="AnimatedSprite2D" parent="."]
+z_index = -9
+position = Vector2(-0.333329, -0.250002)
+scale = Vector2(0.175813, 0.175813)
+sprite_frames = SubResource("SpriteFrames_gueck")
+animation = &"endscreen_idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = 12
+material = SubResource("ShaderMaterial_qpvrt")
+offset_left = -231.0
+offset_top = -130.0
+offset_right = 231.0
+offset_bottom = 130.0

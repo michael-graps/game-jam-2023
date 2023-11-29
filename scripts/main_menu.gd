@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	$play_button.grab_focus()
 	PlayerCollectionsTracker.resetcollections()
+	$menu_bg_animated.play()
 	Engine.max_fps = 60
 
 
