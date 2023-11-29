@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scripts/area3_attic.gd" id="1_fbhbu"]
 [ext_resource type="PackedScene" uid="uid://du04s5w4lm05f" path="res://scenes/player.tscn" id="2_l4e4s"]
 [ext_resource type="PackedScene" uid="uid://shhpu570kho1" path="res://scenes/ingredient1_spice.tscn" id="3_wl8ws"]
-[ext_resource type="PackedScene" uid="uid://g1kmgnkhdpdu" path="res://scenes/walltorch_left.tscn" id="4_i8q3n"]
-[ext_resource type="PackedScene" uid="uid://bxbnsuip2sg6" path="res://scenes/walltorch_right.tscn" id="5_50y2x"]
+[ext_resource type="PackedScene" path="res://scenes/walltorch_left.tscn" id="4_i8q3n"]
+[ext_resource type="PackedScene" path="res://scenes/walltorch_right.tscn" id="5_50y2x"]
 [ext_resource type="Texture2D" uid="uid://dnpvis0ffxgcq" path="res://assets/Lamp Light Mask.png" id="6_5mps3"]
-[ext_resource type="Texture2D" uid="uid://1joymdqm84c3" path="res://assets/Attic_BG_2.png" id="6_7cbsg"]
+[ext_resource type="Texture2D" uid="uid://t47rt2xodc5r" path="res://assets/Attic_BG_2.png" id="6_7cbsg"]
 [ext_resource type="Texture2D" uid="uid://b3ogg0e7ccen1" path="res://assets/Attic_Colour.png" id="7_3pjag"]
-[ext_resource type="PackedScene" uid="uid://c8w385nvk2yat" path="res://scenes/attic_platform.tscn" id="9_2bfes"]
+[ext_resource type="PackedScene" path="res://scenes/attic_platform.tscn" id="9_2bfes"]
 
 [node name="area3_attic" type="Node2D"]
 script = ExtResource("1_fbhbu")
