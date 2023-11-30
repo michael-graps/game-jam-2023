@@ -1,17 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvlynp5ylxfne"]
+[gd_scene load_steps=14 format=3 uid="uid://bvlynp5ylxfne"]
 
 [ext_resource type="Script" path="res://scripts/area1_basement.gd" id="1_yfcsf"]
 [ext_resource type="TileSet" uid="uid://ctg6dr0njagb1" path="res://TileSets/MainTerrain1.tres" id="2_8lwud"]
 [ext_resource type="PackedScene" uid="uid://du04s5w4lm05f" path="res://scenes/player.tscn" id="3_aqvrp"]
+[ext_resource type="PackedScene" uid="uid://dfgy0y6trng0b" path="res://scenes/pause_menu.tscn" id="4_obj5j"]
 [ext_resource type="PackedScene" uid="uid://cq6j81k68wf6m" path="res://scenes/rat_guy.tscn" id="5_t0b6u"]
 [ext_resource type="PackedScene" uid="uid://bxbnsuip2sg6" path="res://scenes/walltorch_right.tscn" id="6_np83m"]
 [ext_resource type="Texture2D" uid="uid://bta6nqovb63iw" path="res://assets/basement_colour.png" id="7_pltxm"]
 [ext_resource type="PackedScene" uid="uid://dibt8o34mxlmw" path="res://scenes/ingredient3_cheese.tscn" id="8_xsb3g"]
 [ext_resource type="PackedScene" uid="uid://cfpgyrk2sldv7" path="res://scenes/arrow_right.tscn" id="9_fbh55"]
 [ext_resource type="PackedScene" uid="uid://g1kmgnkhdpdu" path="res://scenes/walltorch_left.tscn" id="9_kmc0n"]
+[ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="11_1lkx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m4v5"]
 size = Vector2(15.0625, 42.2816)
+
+[sub_resource type="EventAsset" id="EventAsset_yaerf"]
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/room_tone_1"
+guid = "{32477397-574f-43c6-b82a-2f6fa9d1ac7f}"
+name = "room_tone_1"
 
 [node name="area1_basement" type="Node2D"]
 script = ExtResource("1_yfcsf")
@@ -66,6 +75,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="pmenu_location_move" type="CanvasLayer" parent="Player"]
+
+[node name="pause_menu" parent="Player/pmenu_location_move" instance=ExtResource("4_obj5j")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 rotation = 0.279253
@@ -254,5 +267,17 @@ position = Vector2(3052, 118)
 [node name="arrow_right" parent="." instance=ExtResource("9_fbh55")]
 z_index = -1
 position = Vector2(3474, 138)
+
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 2
+num_banks = 1
+bank_0 = ExtResource("11_1lkx1")
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 2
+stop_event = 3
+event = SubResource("EventAsset_yaerf")
+
+[node name="StudioListener2D" type="StudioListener2D" parent="."]
 
 [connection signal="body_entered" from="area2_transition" to="." method="_on_area_2_transition_body_entered"]

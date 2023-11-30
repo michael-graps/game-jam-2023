@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://4m5gws42ibua"]
+[gd_scene load_steps=14 format=3 uid="uid://4m5gws42ibua"]
 
 [ext_resource type="TileSet" uid="uid://ctg6dr0njagb1" path="res://TileSets/MainTerrain1.tres" id="1_3w1kp"]
 [ext_resource type="Script" path="res://scripts/area3_attic.gd" id="1_fbhbu"]
 [ext_resource type="PackedScene" uid="uid://du04s5w4lm05f" path="res://scenes/player.tscn" id="2_l4e4s"]
 [ext_resource type="PackedScene" uid="uid://shhpu570kho1" path="res://scenes/ingredient1_spice.tscn" id="3_wl8ws"]
+[ext_resource type="PackedScene" uid="uid://dfgy0y6trng0b" path="res://scenes/pause_menu.tscn" id="4_7hjj8"]
 [ext_resource type="PackedScene" uid="uid://g1kmgnkhdpdu" path="res://scenes/walltorch_left.tscn" id="4_i8q3n"]
 [ext_resource type="PackedScene" uid="uid://bxbnsuip2sg6" path="res://scenes/walltorch_right.tscn" id="5_50y2x"]
 [ext_resource type="Texture2D" uid="uid://dnpvis0ffxgcq" path="res://assets/Lamp Light Mask.png" id="6_5mps3"]
@@ -77,6 +78,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="pmenu_location_move" type="CanvasLayer" parent="Player"]
+
+[node name="pause_menu" parent="Player/pmenu_location_move" instance=ExtResource("4_7hjj8")]
 
 [node name="ingredient1_spice" parent="." instance=ExtResource("3_wl8ws")]
 position = Vector2(687, 856)

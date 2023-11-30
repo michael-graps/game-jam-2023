@@ -2,15 +2,23 @@
 
 [ext_resource type="Script" path="res://scripts/ingredients_list.gd" id="1_bdbam"]
 [ext_resource type="Texture2D" uid="uid://7h1nm2lx6wmq" path="res://assets/IngredientsList-Sprite.png" id="1_kh3xd"]
-[ext_resource type="EventAsset" uid="uid://wq8uf6e6dq2k" path="res://addons/FMOD/editor/resources/events/{49af4c17-37d4-495e-99d1-16d6316d358b}.tres" id="2_1j8en"]
 [ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="3_srq1w"]
+
+[sub_resource type="EventAsset" id="EventAsset_gwatl"]
+is_3d = true
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/PickUp_List"
+guid = "{43ec7e6f-f7ba-43d2-8abc-9b06cf9e0685}"
+name = "PickUp_List"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvi34"]
 size = Vector2(103.5, 38)
 
 [node name="ingredients_list" type="Node2D" groups=["ingredientslist"]]
 script = ExtResource("1_bdbam")
-event = ExtResource("2_1j8en")
+event = SubResource("EventAsset_gwatl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kh3xd")

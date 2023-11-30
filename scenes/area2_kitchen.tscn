@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cswx43ia0po4m"]
+[gd_scene load_steps=19 format=3 uid="uid://cswx43ia0po4m"]
 
 [ext_resource type="Script" path="res://scripts/area2_kitchen.gd" id="1_53cei"]
 [ext_resource type="TileSet" uid="uid://ctg6dr0njagb1" path="res://TileSets/MainTerrain1.tres" id="1_cj2gb"]
 [ext_resource type="PackedScene" uid="uid://du04s5w4lm05f" path="res://scenes/player.tscn" id="3_ydmw3"]
+[ext_resource type="PackedScene" uid="uid://dfgy0y6trng0b" path="res://scenes/pause_menu.tscn" id="4_2da0x"]
 [ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="4_cwwg5"]
 [ext_resource type="PackedScene" uid="uid://dr3f5ctgmcedb" path="res://scenes/ingredients_list.tscn" id="5_5p15f"]
 [ext_resource type="Texture2D" uid="uid://dnpvis0ffxgcq" path="res://assets/Lamp Light Mask.png" id="5_xwavs"]
@@ -150,6 +151,11 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="pmenu_location_move" type="CanvasLayer" parent="Player"]
+visible = false
+
+[node name="pause_menu" parent="Player/pmenu_location_move" instance=ExtResource("4_2da0x")]
 
 [node name="area1_transition" type="Area2D" parent="."]
 

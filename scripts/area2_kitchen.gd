@@ -7,6 +7,9 @@ extends Node2D
 @onready var candle_ap5 = $candle_light5/candle_player
 @onready var candle_ap6 = $candle_light6/candle_player
 
+@onready var pause_menu = $Player/pmenu_location_move
+var paused = false
+
 func _on_area_1_transition_body_entered(body):
 	print("Teleporting to Area 1: The Basement END")
 	PlayerPositionManager.set_prev_area(4)
@@ -31,7 +34,22 @@ func _ready():
 	candle_ap4.play("candle_light")
 	candle_ap5.play("candle_light")
 	candle_ap6.play("candle_light")
+	pause_menu.hide()
 
+func _process(delta):
+	if Input.is_action_just_pressed("pause_button"):
+		pausemenu()
+
+
+func pausemenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
 
 
 
