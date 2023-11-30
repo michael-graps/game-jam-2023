@@ -30,7 +30,7 @@ func _physics_process(delta):
 func interactionenable():
 	if interact == true and Input.is_action_just_pressed("interact_button") and PlayerCollectionsTracker.everything_got == 1:
 		instance.set_parameter_by_name("stop_fire", stop_fire, false)
-		get_tree().change_scene_to_file("res://scenes/end_screen.tscn")
+		Events.change_scene.emit("res://scenes/end_screen.tscn")
 	else:
 		pass
 

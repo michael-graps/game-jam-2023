@@ -25,7 +25,7 @@ func _ready():
 
 func _on_play_button_pressed():
 	instance.set_parameter_by_name("stop_music", stop_music, false)
-	get_tree().change_scene_to_file("res://scenes/intro_cutscene.tscn")
+	Events.change_scene.emit("res://scenes/intro_cutscene.tscn")
 
 func _on_play_button_focus_entered():
 	if soundbuffer == 1:
@@ -37,7 +37,7 @@ func _on_play_button_focus_entered():
 
 func _on_quickstart_button_pressed():
 	instance.set_parameter_by_name("stop_music", stop_music, false)
-	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
+	Events.change_scene.emit("res://scenes/area1_basement.tscn")
 
 func _on_quickstart_button_focus_entered():
 	FMODRuntime.play_one_shot(event)

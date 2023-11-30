@@ -16,7 +16,7 @@ func _ready():
 
 func _on_menu_button_pressed():
 	instance.set_parameter_by_name("stop_music", stop_music, false)
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	Events.change_scene.emit("res://scenes/main_menu.tscn")
 
 func _on_menu_button_focus_entered():
 	if soundbuffer == 1:
@@ -30,7 +30,7 @@ func _on_replay_button_pressed():
 	PlayerCollectionsTracker.resetcollections()
 	PlayerPositionManager.reset_position()
 	instance.set_parameter_by_name("stop_music", stop_music, false)
-	get_tree().change_scene_to_file("res://scenes/intro_cutscene.tscn")
+	Events.change_scene.emit("res://scenes/intro_cutscene.tscn")
 	
 func _on_replay_button_focus_entered():
 	FMODRuntime.play_one_shot(event)

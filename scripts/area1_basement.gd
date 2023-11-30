@@ -19,7 +19,7 @@ func _on_area_2_transition_body_entered(body):
 	PlayerCollectionsTracker.allgotten_check()
 	instance.set_parameter_by_name("stop_music", stop_music, false)
 	tonestance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	get_tree().change_scene_to_file("res://scenes/area2_kitchen.tscn")
+	Events.change_scene.emit("res://scenes/area2_kitchen.tscn")
 
 func _ready() -> void:
 	Engine.max_fps = 60

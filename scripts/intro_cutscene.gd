@@ -74,4 +74,4 @@ func _physics_process(delta):
 	else:
 		if PageNum == 7 and $Timer.time_left == 0 and $TransitionTimer.time_left == 0:
 			print("Transitioning from the Intro to Area 1")
-			get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
+			Events.change_scene.emit("res://scenes/area1_basement.tscn")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jam 2023"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/SceneManager.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://assets/low res coffee.jpg"
@@ -23,6 +23,7 @@ InteractionManager="*res://scenes/InteractionManager.tscn"
 PlayerCollectionsTracker="*res://scripts/player_collections.gd"
 PlayerPositionManager="*res://scripts/player_position_manager.gd"
 LastTripMusicHandler="*res://scripts/last_trip_music_handler.gd"
+Events="*res://scripts/Events.gd"
 
 [display]
 

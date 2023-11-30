@@ -18,20 +18,20 @@ func _on_area_1_transition_body_entered(body):
 	print("Teleporting to Area 1: The Basement END")
 	PlayerPositionManager.set_prev_area(4)
 	tonestance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
+	Events.change_scene.emit("res://scenes/area1_basement.tscn")
 
 func _on_area_1_top_transition_body_entered(body):
 	print("Teleporting to Area 1: The Basement TOP")
 	PlayerPositionManager.set_prev_area(5)
 	tonestance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	get_tree().change_scene_to_file("res://scenes/area1_basement.tscn")
+	Events.change_scene.emit("res://scenes/area1_basement.tscn")
 
 
 func _on_area_3_transition_body_entered(body):
 	print("Teleporting to Area 3: The Attic")
 	PlayerPositionManager.set_prev_area(3)
 	tonestance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	get_tree().change_scene_to_file("res://scenes/area3_attic.tscn")
+	Events.change_scene.emit("res://scenes/area3_attic.tscn")
 
 func _ready():
 	Engine.max_fps = 60
