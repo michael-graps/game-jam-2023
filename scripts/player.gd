@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-@export var event: EventAsset
-
 @export var move_speed : float = 200
 @export var air_jumps_total : int = 0
 var air_jumps_current : int = air_jumps_total

@@ -17,3 +17,4 @@ func _ready():
 func _on_interact():
 	sprite.play("talk")
 	PlayerCollectionsTracker.part3gotten()
+	PlayerCollectionsTracker.allgotten_check()

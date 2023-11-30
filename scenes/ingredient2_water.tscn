@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwsacsdoa51lh"]
+[gd_scene load_steps=18 format=3 uid="uid://dwsacsdoa51lh"]
 
 [ext_resource type="Script" path="res://scripts/ingredient2_water.gd" id="1_pvsqr"]
 [ext_resource type="EventAsset" uid="uid://b6on4cj3c0vgo" path="res://addons/FMOD/editor/resources/events/{3fd5b35d-4a12-45c8-9ea9-11d0bd8ec620}.tres" id="2_tvnhh"]
 [ext_resource type="Texture2D" uid="uid://cimirtn4vrhou" path="res://assets/PondWater.png" id="3_kunuc"]
 [ext_resource type="Texture2D" uid="uid://k5uf16jrwxy4" path="res://assets/Sparkle_Spritesheet.png" id="4_6drh5"]
 [ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_cbfiq"]
+[ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="6_wxoc4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hoqr"]
 atlas = ExtResource("4_6drh5")
@@ -101,5 +102,9 @@ shape = SubResource("RectangleShape2D_y6fwg")
 [node name="StudioBankLoader" type="StudioBankLoader" parent="."]
 num_banks = 1
 bank_0 = ExtResource("4_cbfiq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(-0.15, -0.15)
+texture = ExtResource("6_wxoc4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

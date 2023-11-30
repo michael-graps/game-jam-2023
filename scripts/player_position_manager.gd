@@ -6,7 +6,7 @@ extends Node
 # like "where do I want to be sent to" and less "where was I coming from" #
 
 # For the 'prev_area' variable;
-# 1 = Basement
+# 1 = Basement Start
 # 2 = Kitchen Bottom Left
 # 3 = Attic
 # 4 = Basement End
@@ -14,6 +14,8 @@ extends Node
 # 6 = Kitchen Top Right
 
 var prev_area = 0
+var area2_entered = 1
+
 
 func set_prev_area(area):
 	if area == 1:
@@ -33,3 +35,7 @@ func set_prev_area(area):
 
 func reset_position():
 	prev_area = 1
+	area2_entered = 0
+
+func entered_kitchen_first_time():
+	area2_entered = 1

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pause_menu = $Player/pmenu_location_move
 var paused = false
+@export var roomtone: EventAsset
 
 func _ready():
 	Engine.max_fps = 60

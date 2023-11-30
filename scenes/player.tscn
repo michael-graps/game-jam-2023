@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bcgv3d2ew8mpd" path="res://assets/Smol_SpriteSheet.png" id="2_7r755"]
 [ext_resource type="Script" path="res://scripts/fmod_trigger.gd" id="3_sbiwu"]
 [ext_resource type="BankAsset" uid="uid://cav2pi4rts5mc" path="res://addons/FMOD/editor/resources/banks/{06b56adc-4593-41a7-8b72-f13d102db41b}.tres" id="4_57e0g"]
-[ext_resource type="EventAsset" uid="uid://rko0qnbq113f" path="res://addons/FMOD/editor/resources/events/{fc19c021-8142-4e57-9f67-197f01396cdd}.tres" id="4_v5ro0"]
 [ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="6_ad7wl"]
 
 [sub_resource type="Animation" id="Animation_gyyow"]
@@ -251,13 +250,22 @@ _data = {
 radius = 5.0
 height = 14.0
 
-[sub_resource type="EventAsset" id="EventAsset_07cj8"]
+[sub_resource type="EventAsset" id="EventAsset_u713s"]
+is_3d = true
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Footstep_Sounds"
+guid = "{1c8f4023-1104-42e1-8082-a6f91533ebd6}"
+name = "Footstep_Sounds"
+
+[sub_resource type="EventAsset" id="EventAsset_n50be"]
 is_3d = true
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
 path = "event:/SFX/Jump_Sounds"
-guid = "{6ad5b499-bfbf-44a6-904a-5acaf2f55f1b}"
+guid = "{4ad9b45b-4a27-42b2-aa24-e2f2f10943d5}"
 name = "Jump_Sounds"
 
 [sub_resource type="Animation" id="Animation_cvvwk"]
@@ -359,11 +367,11 @@ one_shot = true
 
 [node name="FmodTrigger" type="Node" parent="."]
 script = ExtResource("3_sbiwu")
-event = ExtResource("4_v5ro0")
+event = SubResource("EventAsset_u713s")
 
 [node name="FmodTriggerJump" type="Node" parent="."]
 script = ExtResource("3_sbiwu")
-event = SubResource("EventAsset_07cj8")
+event = SubResource("EventAsset_n50be")
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="."]
 load_on = 1

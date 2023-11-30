@@ -7,6 +7,7 @@ extends Node2D
 @onready var pt5 = $Page5/AnimationPlayer
 @onready var pt6 = $Page6/AnimationPlayer
 @onready var pt7 = $Page7/AnimationPlayer
+@onready var fade = $Camera2D/ColorRect/fade_in
 
 var PageNum = 0 
 
@@ -20,6 +21,7 @@ func _ready():
 	$Page7.hide()
 	$Timer.start()
 	$TransitionTimer.start()
+	fade.play("fade_into_intro")
 	pass
 
 func _physics_process(delta):
@@ -66,6 +68,7 @@ func _physics_process(delta):
 		$Page7.show()
 		pt7.play("page_7")
 		PageNum = PageNum + 1
+		fade.play("fade_out")
 		$Timer.start()
 
 	else:

@@ -1,5 +1,8 @@
 extends Control
 
+@export var event: EventAsset
+var soundbuffer = 1
+
 func _process(delta):
 	hide_stuff()
 	show_stuff()
@@ -34,3 +37,18 @@ func _on_quit_button_pressed():
 func _on_resume_button_pressed():
 	Input.action_press("pause_button")
 	Input.action_release("pause_button")
+	
+func _on_quit_button_focus_entered():
+	FMODRuntime.play_one_shot(event)
+	
+	
+func _on_resume_button_focus_entered():
+	if soundbuffer == 1:
+		soundbuffer = 0
+		pass
+	else:
+		FMODRuntime.play_one_shot(event)
+
+
+
+

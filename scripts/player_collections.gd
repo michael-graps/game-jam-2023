@@ -5,6 +5,7 @@ var part1_got = 0
 var part2_got = 0
 var part3_got = 0
 var everything_got = 0
+var game_completed = 0
 
 func resetcollections():
 	list_got = 0
@@ -30,6 +31,9 @@ func allgotten_check():
 		everything_got = 1
 	else:
 		pass
+
+func set_game_completed():
+	game_completed = 1
 
 func giveeverything():
 	var list_got = 1

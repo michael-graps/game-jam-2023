@@ -8,6 +8,9 @@ const base_text = "[X] to"
 var active_areas = []
 var can_interact = true
 
+var cheesefinish = 0
+
+
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)
 

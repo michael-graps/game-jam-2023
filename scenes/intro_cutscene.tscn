@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkmfkprymsvlc"]
+[gd_scene load_steps=27 format=3 uid="uid://bkmfkprymsvlc"]
 
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_qxis0"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="2_k6xdm"]
@@ -17,9 +17,60 @@
 shader = ExtResource("2_k6xdm")
 shader_parameter/player_position = Vector2(0.5, 0.5)
 shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/MULTIPLIER = 0.56
+shader_parameter/MULTIPLIER = 0.0
 shader_parameter/SCALE = 0.355
 shader_parameter/SOFTNESS = 3.655
+
+[sub_resource type="Animation" id="Animation_61kxd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vkn3x"]
+resource_name = "fade_into_intro"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1000, -0.25, 0, 0.25, 0, 0.56, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_mrtug"]
+resource_name = "fade_out"
+length = 4.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.56, -0.25, 0, 0.25, 0, 1000, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(3, 3.9)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvyj2"]
+_data = {
+"RESET": SubResource("Animation_61kxd"),
+"fade_into_intro": SubResource("Animation_vkn3x"),
+"fade_out": SubResource("Animation_mrtug")
+}
 
 [sub_resource type="Animation" id="Animation_8gw46"]
 length = 0.001
@@ -252,12 +303,17 @@ offset_top = -130.0
 offset_right = 231.0
 offset_bottom = 130.0
 
+[node name="fade_in" type="AnimationPlayer" parent="Camera2D/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_kvyj2")
+}
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.1
 one_shot = true
 
 [node name="TransitionTimer" type="Timer" parent="."]
-wait_time = 21.7
+wait_time = 21.0
 one_shot = true
 
 [node name="Page1" type="Sprite2D" parent="."]
