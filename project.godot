@@ -14,7 +14,7 @@ config/name="Game Jam 2023"
 run/main_scene="res://scenes/SceneManager.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-config/icon="res://assets/low res coffee.jpg"
+config/icon="res://assets/icon/smol.png"
 
 [autoload]
 
@@ -160,3 +160,4 @@ interact_button={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
+textures/vram_compression/import_s3tc_bptc=true

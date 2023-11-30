@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://328wb3sb86bo" path="res://assets/Light Mask.png" id="4_cwwg5"]
 [ext_resource type="PackedScene" uid="uid://dr3f5ctgmcedb" path="res://scenes/ingredients_list.tscn" id="5_5p15f"]
 [ext_resource type="Texture2D" uid="uid://dnpvis0ffxgcq" path="res://assets/Lamp Light Mask.png" id="5_xwavs"]
-[ext_resource type="PackedScene" path="res://scenes/ingredient2_water.tscn" id="6_d1swh"]
+[ext_resource type="PackedScene" uid="uid://dwsacsdoa51lh" path="res://scenes/ingredient2_water.tscn" id="6_d1swh"]
 [ext_resource type="Texture2D" uid="uid://dql80eyi4syd2" path="res://assets/Kitchen_BG.png" id="8_v6d8h"]
 [ext_resource type="Texture2D" uid="uid://c0do0kwgrnfwy" path="res://assets/Kitchen_Colour.png" id="9_3r7s7"]
 [ext_resource type="PackedScene" uid="uid://1m0i400lygc1" path="res://scenes/pot_guide.tscn" id="10_h0yje"]
