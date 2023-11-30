@@ -80,6 +80,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="pmenu_location_move" type="CanvasLayer" parent="Player"]
+visible = false
 
 [node name="pause_menu" parent="Player/pmenu_location_move" instance=ExtResource("4_7hjj8")]
 
